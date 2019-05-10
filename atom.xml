@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>OuYang&#39;blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-05-09T04:32:21.520Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>OuYang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>for和for in的区别</title>
+    <link href="http://yoursite.com/2019/05/10/for%E4%B8%8Efor%20in%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/05/10/for与for in的区别/</id>
+    <published>2019-05-10T01:21:56.338Z</published>
+    <updated>2019-05-09T04:32:21.520Z</updated>
+    
+    <content type="html"><![CDATA[<p>从学习C语言开始就学习了遍历，for更是用的特别熟悉。在javascript中除了有for循环还有for in，刚开始接触for in的时候总是把他当for来使用。感觉没什么区别然而在最近写项目时遇到了这个for in才知悉了他与for的不同，果然还是实践出真知。下面先简单介绍一下for 和 for in吧：</p><h2 id="for的语法结构："><a href="#for的语法结构：" class="headerlink" title="for的语法结构："></a>for的语法结构：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> for( 初始值;判断条件;步幅)&#123; code &#125;</span><br><span class="line"> </span><br><span class="line">for( var i =0;i&lt;5;i++ )&#123;</span><br><span class="line">　　//i初始值为0；i是否小写5；每次循环后i加1</span><br><span class="line">　　console.log(i);//  0  1  2  3  4</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h2 id="for-in的写法："><a href="#for-in的写法：" class="headerlink" title="for in的写法："></a>for in的写法：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"></span><br><span class="line">var man = &#123;</span><br><span class="line">　　age:21,</span><br><span class="line">　　name:&quot;张三&quot;,</span><br><span class="line">　　sex:&quot;男&quot;</span><br><span class="line">&#125;</span><br><span class="line">console.log(man);</span><br><span class="line">//结果：Object</span><br><span class="line">age: 21</span><br><span class="line">name: &quot;张三&quot;</span><br><span class="line">sex: &quot;男&quot;</span><br><span class="line">__proto__: Object</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(var attr in man)&#123;//attr是属性，attr可以换成任意变量名</span><br><span class="line">　　console.log(attr);//  输出的是 属性名：age  name  sex</span><br><span class="line">　　console.log(wq[attr]);//属性相对应的值  20  咸鱼  男</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看到这里我相信有些人已经看明白了。不过我还是多嘴说一下吧，上面的for循环就是我们常用的方法用来遍历,十分简单的操作。而下面的for in呢？他一般时用来遍历对象的，在我的理解看来，for 循环可以遍历一个数组属于一维，而for in遍历对象，对象有多个属性，各个属性又有各自 的值相当于二位数组了。在上面的案例里面，想要获取对象的属性相应的值for是遍历不了的，这个时候for in就出场了。但使用for in的时候还要注意几个小问题：</p><p>而for in就不同了，上面的案例中，对象wq里有三个属性和相对应的值，想要获取到这三个属性及相对应的值for是办不到的，只有for in才可以，所以说，for in一般都是用在遍历对象的，另外，for in也可以遍历数组，但是会存在以下几个问题。</p><p><strong>1、 for in这种循环i是string类型的，不能直接进行几何运算<br>2、遍历顺序有可能不是按照实际数组的内部顺序<br>3、使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性<br>4、简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。</strong></p><p> 所以说for in也有他的局限性，因此遍历一般的数组用for比较好，遍历对象就需要for in了</p><h2 id="最后附上一个小案例"><a href="#最后附上一个小案例" class="headerlink" title="最后附上一个小案例"></a>最后附上一个小案例</h2><p> <img src="https://img-blog.csdnimg.cn/20190323183404310.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;从学习C语言开始就学习了遍历，for更是用的特别熟悉。在javascript中除了有for循环还有for in，刚开始接触for in的时候总是把他当for来使用。感觉没什么区别然而在最近写项目时遇到了这个for in才知悉了他与for的不同，果然还是实践出真知。下面先简单
+      
+    
+    </summary>
+    
+      <category term="js" scheme="http://yoursite.com/categories/js/"/>
+    
+    
+      <category term="for in" scheme="http://yoursite.com/tags/for-in/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax发送get_post请求的基本格式模板以及验证用户是否存在案例</title>
+    <link href="http://yoursite.com/2019/05/10/Ajax%E5%8F%91%E9%80%81get_post%E8%AF%B7%E6%B1%82%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F%E6%A8%A1%E6%9D%BF%E4%BB%A5%E5%8F%8A%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%A1%88%E4%BE%8B/"/>
+    <id>http://yoursite.com/2019/05/10/Ajax发送get_post请求的基本格式模板以及验证用户是否存在案例/</id>
+    <published>2019-05-10T01:21:56.334Z</published>
+    <updated>2019-05-09T04:36:42.872Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Ajax发送get/post请求主要分为以下4步：</strong></p><h6 id="1-创建对象"><a href="#1-创建对象" class="headerlink" title="1.创建对象"></a>1.创建对象</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var xhr = new XMLHttpRequest();</span><br></pre></td></tr></table></figure><h6 id="2-设置请求行"><a href="#2-设置请求行" class="headerlink" title="2.设置请求行"></a>2.设置请求行</h6><pre><code>//（get请求数据写在url后面）open(&apos;method&apos;,&apos;url&apos;,&apos;async&apos;);/*method:请求的类型：GET或POST  * url:文件在服务器上的位置  * async:true(异步)或false(同步),默认true  * */xhr.open(&apos;get&apos;,&apos;getData.php&apos;，true);</code></pre><h6 id="3-设置请求头"><a href="#3-设置请求头" class="headerlink" title="3.设置请求头"></a>3.设置请求头</h6><pre><code>//（get请求可以省略，post不发数据也可以省略）xhr.setRequestHeader(&quot;Content-type&quot;,&quot;application/x-www-form-urlencoded&quot;);</code></pre><h6 id="4-请求主体发送"><a href="#4-请求主体发送" class="headerlink" title="4.请求主体发送"></a>4.请求主体发送</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//get请求为空，或者写null，post请求数据写在这里，如果没有数据，直接为空或者写null</span><br><span class="line"> xhr.send(null);</span><br></pre></td></tr></table></figure><p>为了方便理解，下面我贴一个验证用户是否存在的小案例：</p><h3 id="前端部分代码"><a href="#前端部分代码" class="headerlink" title="前端部分代码"></a>前端部分代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h2&gt;用户注册&lt;/h2&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot;  placeholder=&quot;请输入用户名&quot;&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //什么时候发送请求？onblur:失去焦点</span><br><span class="line">    document.querySelector(&apos;input&apos;).onblur = function()&#123;</span><br><span class="line">    //1.创建对象</span><br><span class="line">        var xhr = new XMLHttpRequest();</span><br><span class="line">        //2.设置请求行</span><br><span class="line">        xhr.open(&apos;get&apos;,&apos;checkName.php?name=&apos;+this.value);</span><br><span class="line">        //3.设置请求头（此处用get请求可以省略）</span><br><span class="line">        // xhr.setRequestHeader();</span><br><span class="line">        //这里是设置回调函数</span><br><span class="line">        xhr.onload = function () &#123;</span><br><span class="line">            document.querySelector(&apos;h2&apos;).innerHTML = xhr.responseText;//呈现给用户看</span><br><span class="line">        &#125;</span><br><span class="line">        //4.请求主体发送（get请求为空，或者写null）</span><br><span class="line">        xhr.send(null);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><h3 id="后端部分代码"><a href="#后端部分代码" class="headerlink" title="后端部分代码"></a>后端部分代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">//获取数据</span><br><span class="line">$name = $_GET[&apos;name&apos;];</span><br><span class="line">//用数组模拟数据库</span><br><span class="line">$nameArr = array(&apos;jack&apos;,&apos;rose&apos;,&apos;nike&apos;);</span><br><span class="line">//在数据库中查询数据，in_array（要查询的数据名，在哪个数据库查询）</span><br><span class="line">$result = in_array($name,$nameArr);</span><br><span class="line">if($result == true)&#123;</span><br><span class="line">    echo &apos;很遗憾，已被使用&apos;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    echo &apos;恭喜你，可以使用&apos;;</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure><p><strong>查询前</strong><br><img src="https://img-blog.csdnimg.cn/20190329121908340.png" alt="在这里插入图片描述"><br><strong>查询rose(数据库中存在)</strong><br><img src="https://img-blog.csdnimg.cn/20190329122002272.png" alt="在这里插入图片描述"><br><strong>查询Tom(数据库中不存在)</strong><br><img src="https://img-blog.csdnimg.cn/20190329122054700.png" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;Ajax发送get/post请求主要分为以下4步：&lt;/strong&gt;&lt;/p&gt;
+&lt;h6 id=&quot;1-创建对象&quot;&gt;&lt;a href=&quot;#1-创建对象&quot; class=&quot;headerlink&quot; title=&quot;1.创建对象&quot;&gt;&lt;/a&gt;1.创建对象&lt;/h6&gt;&lt;figure
+      
+    
+    </summary>
+    
+      <category term="Ajax" scheme="http://yoursite.com/categories/Ajax/"/>
+    
+    
+      <category term="_get_post" scheme="http://yoursite.com/tags/get-post/"/>
+    
+  </entry>
+  
+</feed>
