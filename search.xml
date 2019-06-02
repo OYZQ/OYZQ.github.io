@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[for和for in的区别]]></title>
-    <url>%2F2019%2F06%2F02%2Ffor%E4%B8%8Efor%20in%E7%9A%84%E5%8C%BA%E5%88%AB%20-%20%E5%89%AF%E6%9C%AC%2F</url>
-    <content type="text"><![CDATA[从学习C语言开始就学习了遍历，for更是用的特别熟悉。在javascript中除了有for循环还有for in，刚开始接触for in的时候总是把他当for来使用。感觉没什么区别然而在最近写项目时遇到了这个for in才知悉了他与for的不同，果然还是实践出真知。下面先简单介绍一下for 和 for in吧： for的语法结构：1234567 for( 初始值;判断条件;步幅)&#123; code &#125; for( var i =0;i&lt;5;i++ )&#123; //i初始值为0；i是否小写5；每次循环后i加1 console.log(i);// 0 1 2 3 4 &#125; for in的写法：12345678910111213 var man = &#123; age:21, name:"张三", sex:"男"&#125;console.log(man);//结果：Object age: 21 name: "张三" sex: "男" __proto__: Object 1234for(var attr in man)&#123;//attr是属性，attr可以换成任意变量名 console.log(attr);// 输出的是 属性名：age name sex console.log(wq[attr]);//属性相对应的值 20 咸鱼 男&#125; 看到这里我相信有些人已经看明白了。不过我还是多嘴说一下吧，上面的for循环就是我们常用的方法用来遍历,十分简单的操作。而下面的for in呢？他一般时用来遍历对象的，在我的理解看来，for 循环可以遍历一个数组属于一维，而for in遍历对象，对象有多个属性，各个属性又有各自 的值相当于二位数组了。在上面的案例里面，想要获取对象的属性相应的值for是遍历不了的，这个时候for in就出场了。但使用for in的时候还要注意几个小问题： 而for in就不同了，上面的案例中，对象wq里有三个属性和相对应的值，想要获取到这三个属性及相对应的值for是办不到的，只有for in才可以，所以说，for in一般都是用在遍历对象的，另外，for in也可以遍历数组，但是会存在以下几个问题。 1、 for in这种循环i是string类型的，不能直接进行几何运算2、遍历顺序有可能不是按照实际数组的内部顺序3、使用for in会遍历数组所有的可枚举属性，包括原型。例如上栗的原型方法method和name属性4、简而言之，for-in是为普通对象设计的，你可以遍历得到字符串类型的键，因此不适用于数组遍历。 所以说for in也有他的局限性，因此遍历一般的数组用for比较好，遍历对象就需要for in了 最后附上一个小案例]]></content>
-      <categories>
-        <category>js</category>
-      </categories>
-      <tags>
-        <tag>for in</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[前端需要了解的JSON---数据读取与转化]]></title>
     <url>%2F2019%2F05%2F10%2F%E5%89%8D%E7%AB%AF%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84JSON---%E6%95%B0%E6%8D%AE%E8%AF%BB%E5%8F%96%E4%B8%8E%E8%BD%AC%E5%8C%96%2F</url>
     <content type="text"><![CDATA[### 学习JSON之前我们需要明白的几点： 12345678/* * 1.json是一种数据的格式 * 2.json跟编程语言没有关系 * 3.json的载体是字符串 * 4.基本上所有的编程语言都支持JSON * 5.语言简洁 基本上所有的编程语言 都提供了对应的方法 来解析JSON * 6.JSON格式的字符串 转换完毕之后 会变成数组 对象 * */ json的写法 – 用来表示对象123456789//对象使用&#123;&#125; //属性名 必须使用""包裹 如果属性值是数值 可以不使用双引号 var JSONObject = '&#123;"name":"刘亦菲","skill":"失忆"&#125;'; console.log(JSONObject); //转化为 对应的 对象（数组） var obj = JSON.parse(JSONObject); console.log(obj); //读取对象属性值 console.log(obj.name+'|'+obj.skill); 结果： JSON的写法 – 用来表示数组1234567var JSONArr = '["绿色的花菜","大蒜","番茄","圣女果"]';console.log(JSONArr);//转化为对应的数组（对象）var arr = JSON.parse(JSONArr);console.log(arr);//读取数组中第三个元素console.log(arr[2]); 结果： JSON的写法 – 对象数组1234567var JSONObjArr = '&#123;"name":"彭林","skill":"约跑","friend":["周琳琳","林立群","....."]&#125;'; console.log(JSONObjArr); //转化为对应的对象数组 var result = JSON.parse(JSONObjArr); console.log(result); //读取对象数组元素 console.log(result.friend[1]); 结果：]]></content>
