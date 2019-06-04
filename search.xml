@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Node.js 第6天]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC6%E5%A4%A9%2F</url>
+    <content type="text"><![CDATA[## 知识点 多人社区案例 复习 MongoDB 数据库 灵活 不用设计数据表 业务的改动不需要关心数据表结构 DBA 架构师 级别的工程师都需要掌握这项技能 设计 维护 分布式计算 mongoose mongodb 官方包也可以操作 MongoDB 数据库 第三方包：WordPress 项目开发团队 设计 Schema 发布 Model（得到模型构造函数） 查询 增加 修改 删除 Promise http://es6.ruanyifeng.com/#docs/promise callback hell 回调地狱 回调函数中套了回调函数 Promise(EcmaScript 6 中新增了一个语法 API) 容器 异步任务（pending） resolve reject then 方法获取容器的结果（成功的，失败的） then 方法支持链式调用 可以在 then 方法中返回一个 promise 对象，然后在后面的 then 方法中获取上一个 then 返回的 promise 对象的状态结果 上午总结下午总结总结 path 模块 dirname 和 filename 动态的 获取当前文件或者文件所处目录的绝对路径 用来解决文件操作路劲的相对路径问题 因为在文件操作中，相对路径相对于执行 node 命令所处的目录 所以为了尽量避免这个问题，都建议文件操作的相对路劲都转为：动态的绝对路径 方式：path.join(__dirname, &#39;文件名&#39;) art-template 模板引擎(include、block、extend) include extend block 表单同步提交和异步提交区别 以前没有 ajax 都是这么干的，甚至有些直接就是渲染了提示信息出来了 异步提交页面不会刷新，交互方式更灵活 Express 中配置使用 express-session 插件 概述案例中注册-登陆-退出的前后端交互实现流程 path 模块 dirname 和 filename 动态的 获取当前文件或者文件所处目录的绝对路径 用来解决文件操作路劲的相对路径问题 因为在文件操作中，相对路径相对于执行 node 命令所处的目录 所以为了尽量避免这个问题，都建议文件操作的相对路劲都转为：动态的绝对路径 方式：path.join(__dirname, &#39;文件名&#39;) art-template 模板引擎(include、block、extend) include extend block 动手写一写 表单同步提交和异步提交区别 字符串交互 请求（报文、具有一定格式的字符串） HTTP 就是 Web 中的沟通语言 服务器响应（字符串） 01 服务器端重定向针对异步请求无效 Express 中配置使用 express-session 插件 插件也是工具 你只需要明确你的目标就可以了 我们最终的目标就是使用 Session 来帮我们管理一些敏感信息数据状态，例如保存登陆状态 写 Session req.session.xxx = xx 读 Session req.session.xxx 删除 Session req.session.xxx = null 更严谨的做法是 delete 语法 delete req.session.xxx 概述案例中注册-登陆-退出的前后端交互实现流程]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Node.js 第5天 --- MongoDB]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC5%E5%A4%A9%20---%20MongoDB%2F</url>
+    <content type="text"><![CDATA[## 知识点 Express MongoDB 项目 一天半的时间 复习 文件路径中的 / 和模块标识中的 / Express 中配置使用 art-template 模板引擎 Express 中配置使用 body-parser Express 中配置处理静态资源 CRUD 案例中单独提取路由模块 上午总结 回调函数 异步编程 如果需要得到一个函数内部异步操作的结果，这是时候必须通过回调函数来获取 在调用的位置传递一个函数进来 在封装的函数内部调用传递进来的函数 find、findIndex、forEach 数组的遍历方法，都是对函数作为参数一种运用 every some includes map reduce package-lock.json 文件的作用 下载速度快了 锁定版本 JavaScript 模块化 Node 中的 CommonJS 浏览器中的 AMD require.js CMD sea.js EcmaScript 官方在 EcmaScript 6 中增加了官方支持 EcmaScript 6 后面我们会学，编译工具 MongoDB 数据库 MongoDB 的数据存储结构 数据库 集合（表） 文档（表记录） MongoDB 官方有一个 mongodb 的包可以用来操作 MongoDB 数据库 这个确实和强大，但是比较原始，麻烦，所以咱们不使用它 mongoose 真正在公司进行开发，使用的是 mongoose 这个第三方包 它是基于 MongoDB 官方的 mongodb 包进一步做了封装 可以提高开发效率 让你操作 MongoDB 数据库更方便 掌握使用 mongoose 对数据集合进行基本的 CRUD 把之前的 crud 案例改为了 MongoDB 数据库版本 使用 Node 操作 mysql 数据库 下午总结目标]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Node.js 第4天 --- express]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC4%E5%A4%A9%20---%20express%2F</url>
+    <content type="text"><![CDATA[## 知识点 Express 基于文件做一套 CRUD 复习 jQuery 的 each 和 原生的 JavaScript 方法 forEach 301 和 302 的区别 模块中导出单个成员和导出多个成员的方式 module.exports = xxx 通过多次：exports.xxx = xxx 导出多个也可以：moudle.exports = {多个成员} module.exports 和 exports 的区别 exports 只是 module.exports 的一个引用而已，目的只是为了简化写法 每个模块最终 return 的是 module.exports require 方法加载规则 优先从缓存加载 核心模块 路径形式的模块 ./xxx ../xxxx /xxxx / 在这里表示的是磁盘根路径 c:/xxx 第三方模块 第三方模块的标识就是第三方模块的名称（不可能有第三方模块和核心模块的名字一致） npm 开发人员可以把写好的框架、库发布到 npm 上 使用者在使用的时候就可以很方便的通过 npm 来下载 使用方式：var 名字 = require(&#39;npm install 的那个包名&#39;) node_modules node_modules/express node_modules/express/package.json node_modules/express/package.json main 如果 package.json 或者 package.json main 不成立，则查找备选项：index.js 如果以上条件都不成立，则继续进入上一级目录中的 node_modules 按照上面的规则继续查找 如果直到当前文件模块所属磁盘根目录都找不到，最后报错：can not find module xxx package.json 包描述文件 就是产品的说明书 dependencies 属性，用来保存项目的第三方包依赖项信息 所以建议每个项目都要有且只有一个 package.json (存放在项目的根目录) 我们可以通过 npm init [--yes] 来生成 package.json 文件 同样的，为了保存依赖项信息，我们每次安装第三方包的时候都要加上：--save 选项。 npm 常用命令 install uninstall Express 基本使用 模块标识中的 / 和文件操作路径中的 /上午总结 文件路径中的 / 和模块标识中的 / nodemon Express art-template 模板引擎的配置 body-parser 解析表单 POST 请求体 详解了 express 静态服务 API app.use(‘/public/‘, express.static(‘./public’)) crud 下午总结目标 文件路径中的 / 和模块标识中的 / Express 中配置使用 art-template 模板引擎 Express 中配置使用 body-parser Express 中配置处理静态资源 CRUD 案例中单独提取路由模块]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC3%E5%A4%A9%20---%20exports%20%E5%92%8C%20module.exports%20%2Ceach%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[知识点 增删改查 登陆 注册 头像 服务端图片 水印 图片水印 找回密码 密码修改 模块系统 核心模块 第三方模块 自己写的模块 加载规则以及加载机制 循环加载 npm package.json Express 第三方 Web 开发框架 高度封装了 http 模块 更加专注于业务，而非底层细节 知其所以然 增删改查 使用文件来保存数据（锻炼异步编码） MongoDB （所有方法都封装好了） 复习 网站开发模型 黑盒子、哑巴 写代码让它变得更智能 按照你设计好的套路供用户使用 在 Node 中使用 art-template 模板引擎 安装 加载 template.render() 客户端渲染和服务端渲染的区别 最少两次请求，发起 ajax 在客户端使用模板引擎渲染 客户端拿到的就是服务端已经渲染好的 处理留言本案例首页数据列表渲染展示 处理留言本案例发表留言功能 路径 设计好的请求路径 $GET 直接或查询字符串数据 Node 中需要咱们自己动手来解析 url.parse() /pinglun?name=jack&amp;message=hello split(‘?’) name=jack&amp;message=hello split(‘&amp;’) name=jack message=hello forEach() name=jack.split(‘=’) 0 key 1 value 掌握如何解析请求路径中的查询字符串 url.parse() 如何在 Node 中实现服务器重定向 header(‘location’) 301 永久重定向 浏览器会记住 a.com b.com a 浏览器不会请求 a 了 直接去跳到 b 了 302 临时重定向 浏览器不记忆 a.com b.com a.com 还会请求 a a 告诉浏览器你往 b Node 中的 Console（REPL）使用 上午总结 jQuery 的 each 和 原生的 JavaScript 方法 forEach EcmaScript 5 提供的 不兼容 IE 8 jQuery 的 each 由 jQuery 这个第三方库提供 jQuery 2 以下的版本是兼容 IE 8 的 它的 each 方法主要用来遍历 jQuery 实例对象（伪数组） 同时它也可以作为低版本浏览器中 forEach 替代品 jQuery 的实例对象不能使用 forEach 方法，如果想要使用必须转为数组才可以使用 [].slice.call(jQuery实例对象) 模块中导出多个成员和导出单个成员 301 和 302 状态码区别 301 永久重定向，浏览器会记住 302 临时重定向 exports 和 module.exports 的区别 每个模块中都有一个 module 对象 module 对象中有一个 exports 对象 我们可以把需要导出的成员都挂载到 module.exports 接口对象中 也就是：moudle.exports.xxx = xxx 的方式 但是每次都 moudle.exports.xxx = xxx 很麻烦，点儿的太多了 所以 Node 为了你方便，同时在每一个模块中都提供了一个成员叫：exports exports === module.exports 结果为 trues 所以对于：moudle.exports.xxx = xxx 的方式 完全可以：expots.xxx = xxx 当一个模块需要导出单个成员的时候，这个时候必须使用：module.exports = xxx 的方式 不要使用 exports = xxx 不管用 因为每个模块最终向外 return 的是 module.exports 而 exports 只是 module.exports 的一个引用 所以即便你为 exports = xx 重新赋值，也不会影响 module.exports 但是有一种赋值方式比较特殊：exports = module.exports 这个用来重新建立引用关系的 之所以让大家明白这个道理，是希望可以更灵活的去用它 Node 是一个比肩 Java、PHP 的一个平台 JavaScript 既能写前端也能写服务端 12345678moudle.exports = &#123; a: 123&#125;// 重新建立 exports 和 module.exports 之间的引用关系exports = module.exportsexports.foo = 'bar' 12345678910111213141516171819202122232425262728Array.prototype.mySlice = function () &#123; var start = 0 var end = this.length if (arguments.length === 1) &#123; start = arguments[0] &#125; else if (arguments.length === 2) &#123; start = arguments[0] end = arguments[1] &#125; var tmp = [] for (var i = start; i &lt; end; i++) &#123; // fakeArr[0] // fakeArr[1] // fakeArr[2] tmp.push(this[i]) &#125; return tmp&#125;var fakeArr = &#123; 0: 'abc', 1: 'efg', 2: 'haha', length: 3&#125;// 所以你就得到了真正的数组。 [].mySlice.call(fakeArr) 下午总结 jQuery 的 each 和 原生的 JavaScript 方法 forEach 301 和 302 的区别 模块中导出单个成员和导出多个成员的方式 module.exports 和 exports 的区别 require 方法加载规则 优先从缓存加载 核心模块 路径形式的模块 第三方模块 node_modules package.json 包描述文件 dependencies 选项的作用:依赖 npm 常用命令 Express 基本使用]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Node.js 第2天 ---代码风格，服务端渲染]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC2%E5%A4%A9%20---%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%EF%BC%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93%2F</url>
+    <content type="text"><![CDATA[### 代码风格 12345678910111213141516var foo = 'bar'var foo ='bar'var foo= 'bar'var foo = "bar"if (true) &#123; console.log('hello') &#125;if (true) &#123; console.log('hello') &#125;if (true )&#123; console.log('hello') &#125; 为了约定大家的代码风格，所以在社区中诞生了一些比较规范的代码风格规范：dnsajkndkjsabnjkdnjksandjknsajkdnjkasnjkdnjksandjknsajkdnjksajkdnas 推荐的两种代码风格 JavaScript Standard Style Airbnb JavaScript Style 总结 代码风格 无分号 ( [ ` 最好前面补分号，避免一些问题 《编写可维护的 JavaScript》 不仅是功能，还要写的漂亮 服务端渲染 说白了就是在服务端使用模板引擎 模板引擎最早诞生于服务端，后来才发展到了前端 服务端渲染和客户端渲染的区别 客户端渲染不利于 SEO 搜索引擎优化 服务端渲染是可以被爬虫抓取到的，客户端异步渲染是很难被爬虫抓取到的 所以你会发现真正的网站既不是纯异步也不是纯服务端渲染出来的 而是两者结合来做的 例如京东的商品列表就采用的是服务端渲染，目的是为了 SEO 搜索引擎优化 而它的商品评论列表为了用户体验，而且也不需要 SEO 优化，所以采用是客户端渲染]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Node.js 第1天 --- 模块系统，HTTP]]></title>
+    <url>%2F2019%2F06%2F04%2FNode.js%20%E7%AC%AC1%E5%A4%A9%20---%20%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F%EF%BC%8CHTTP%2F</url>
+    <content type="text"><![CDATA[### 上午总结 基本网站开发能力 服务端 前端 运维部署 Node.js 是什么 JavaScript 运行时环境 既不是语言，也不是框架，它是一个平台 简单来讲就是Node.js可以解析和执行JavaScript代码 以前只有浏览器可以解析和执行JavaScript代码 也就是说现在的JavaScript完全可以脱离浏览器来运行，一切都归功于：Node.js Node.js 中的 JavaScript 没有 BOM、DOM EcmaScript 只有基本的 JavaScript 语言部分 在 Node 中为 JavaScript 提供了一些服务器级别的 API 文件操作的能力 网络服务的构建 网络通信 http服务器 等处理….. 构建于Chrome的V8引擎之上 代码只是具有特定格式的字符串而已 引擎可以认识它，引擎可以帮你去解析和执行 Google Chrome的V8引擎是目前公认的解析执行JavaScript代码最快的 Node.js的作者把Google Chrome中的V8引擎移植了出来，开发了一个独立的JavaScript运行时环境 Node.js能做什么 web服务后台啊 命令行工具 npm(node) git(c语言) hexo(node) 。。。 下午总结 Node 中的 JavaScript EcmaScript 变量 方法 数据类型 内置对象 Array Object Date Math 模块系统 在 Node 中没有全局作用域的概念 在 Node 中，只能通过 require 方法来加载执行多个 JavaScript 脚本文件 require 加载只能是执行其中的代码，文件与文件之间由于是模块作用域，所以不会有污染的问题 模块完全是封闭的 外部无法访问内部 内部也无法访问外部 模块作用域固然带来了一些好处，可以加载执行多个文件，可以完全避免变量命名冲突污染的问题 但是某些情况下，模块与模块是需要进行通信的 在每个模块中，都提供了一个对象：exports 该对象默认是一个空对象 你要做的就是把需要被外部访问使用的成员手动的挂载到 exports 接口对象中 然后谁来 require 这个模块，谁就可以得到模块内部的 exports 接口对象 还有其它的一些规则，具体后面讲，以及如何在项目中去使用这种编程方式，会通过后面的案例来处理 核心模块 核心模块是由 Node 提供的一个个的具名的模块，它们都有自己特殊的名称标识，例如 fs 文件操作模块 http 网络服务构建模块 os 操作系统信息模块 path 路径处理模块 。。。。 所有核心模块在使用的时候都必须手动的先使用 require 方法来加载，然后才可以使用，例如： var fs = require(&#39;fs&#39;) http require 端口号 ip 地址定位计算机 端口号定位具体的应用程序 Content-Type 服务器最好把每次响应的数据是什么内容类型都告诉客户端，而且要正确的告诉 不同的资源对应的 Content-Type 是不一样，具体参照：http://tool.oschina.net/commons 对于文本类型的数据，最好都加上编码，目的是为了防止中文解析乱码问题 通过网络发送文件 发送的并不是文件，本质上来讲发送是文件的内容 当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[H5新增表单属性]]></title>
     <url>%2F2019%2F06%2F04%2FH5%E6%96%B0%E5%A2%9E%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%2F</url>
     <content type="text"><![CDATA[### H5新增的input类型 1234567891011121314&lt;form&gt; 邮箱：&lt;input type="email"&gt;&lt;br/&gt; 数量：&lt;input type="number" value="20" max="25" min="18"&gt;&lt;br/&gt; 电话：&lt;input type="tel"&gt;&lt;br/&gt; 网址：&lt;input type="url"&gt;&lt;br/&gt; 范围：&lt;input type="range" max="100" min="0"&gt;&lt;br/&gt; 颜色：&lt;input type="color"&gt;&lt;br/&gt; 时间:&lt;input type="time"&gt;&lt;br/&gt; 日期：&lt;input type="date"&gt;&lt;br/&gt; 日期时间：&lt;input type="datetime-local"&gt;&lt;br/&gt; 月份：&lt;input type="month"&gt;&lt;br/&gt; 星期：&lt;input type="week"&gt;&lt;br/&gt; 提交：&lt;input type="submit"&gt; &lt;/form&gt; 在H5新增input类型帮我们省去了许多原来需要自己实现的功能。 email帮我们自动校验了格式。 tel由于全球号码格式不一样，格式不太好校验不过帮我们在移动端点击该输入框会切换到数字键盘。 url帮我们校验了格式不过需要注意的是网址前面需要加上：http://。 number 类型用于应该包含数值的输入域。还能设置输入数字的范围 range 类型用于应该包含一定范围内数字值的输入域。range 类型显示为滑动条。还能够设定数字的限定： 效果图： 浏览器支持需要注意的是新增的类型不是所有浏览器都兼容，部分兼容的呈现出来的效果也不一样。 表单其他新增属性placeholder:占位符，提示文本 autofocus:自动获取焦点 autocomplete:自动完成，on打开,off关闭 1.必须成功提交过 2.必须有name属性 required:必须输入，如果没有输入会阻止提交 pattern:正则表达式的验证 multiple:允许选择多个文件,在邮箱中允许输入多个邮箱地址，用,分割 1234567891011121314&lt;form action=""&gt; &lt;!--placeholder占位符，提示文本 --&gt; &lt;!-- autofocus自动获取焦点--&gt; &lt;!--autocomplete自动完成，on打开,off关闭 1.必须成功提交过 2.必须有name属性--&gt; 用户名：&lt;input type="text" name="userName" placeholder="请输入用户名" autofocus autocomplete="on"&gt;&lt;br/&gt; &lt;!-- tel并不会进行验证，只是会在移动端打开数字键盘--&gt; &lt;!-- required必须输入，如果没有输入会阻止提交--&gt; &lt;!-- pattern正则表达式的验证--&gt; 手机号:&lt;input type="tel" required pattern="^(\+86)?1\d&#123;10&#125;$"&gt;&lt;br/&gt; &lt;!-- multiple允许选择多个文件,在邮箱中允许输入多个邮箱地址，用,分割--&gt; 文件：&lt;input type="file" name="photo" multiple&gt;&lt;br/&gt; 邮箱：&lt;input type="email" multiple name="email"&gt; &lt;input type="submit"&gt; &lt;/form&gt; 效果图：]]></content>

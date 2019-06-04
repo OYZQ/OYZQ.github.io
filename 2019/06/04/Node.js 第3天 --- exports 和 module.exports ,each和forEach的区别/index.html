@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别 | OuYang'blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</h1><a id="logo" href="/.">OuYang'blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</h1><div class="post-meta">Jun 4, 2019<span> | </span><span class="category"><a href="/categories/node-js/">node.js</a></span></div><div class="post-content"><ul>
+<li><ul>
+<li><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4></li>
+<li>增删改查</li>
+<li>登陆</li>
+<li>注册</li>
+<li>头像</li>
+<li>服务端图片</li>
+<li>水印</li>
+<li>图片水印</li>
+<li>找回密码</li>
+<li>密码修改</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h4 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h4><ul>
+<li>核心模块</li>
+<li>第三方模块</li>
+<li>自己写的模块</li>
+<li>加载规则以及加载机制</li>
+<li>循环加载</li>
+</ul>
+</li>
+<li><h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4></li>
+<li><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4></li>
+<li><h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul>
+<li>第三方 Web 开发框架</li>
+<li>高度封装了 http 模块</li>
+<li>更加专注于业务，而非底层细节</li>
+<li>知其所以然</li>
+</ul>
+</li>
+<li><p>增删改查</p>
+<ul>
+<li>使用文件来保存数据（锻炼异步编码）</li>
+</ul>
+</li>
+<li><p>MongoDB</p>
+<ul>
+<li>（所有方法都封装好了）</li>
+</ul>
+</li>
+</ul>
+<h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul>
+<li><h4 id="网站开发模型"><a href="#网站开发模型" class="headerlink" title="网站开发模型"></a>网站开发模型</h4><ul>
+<li>黑盒子、哑巴</li>
+<li>写代码让它变得更智能</li>
+<li>按照你设计好的套路供用户使用</li>
+</ul>
+</li>
+<li><h4 id="在-Node-中使用-art-template-模板引擎"><a href="#在-Node-中使用-art-template-模板引擎" class="headerlink" title="在 Node 中使用 art-template 模板引擎"></a>在 Node 中使用 art-template 模板引擎</h4><ul>
+<li>安装</li>
+<li>加载</li>
+<li>template.render()</li>
+</ul>
+</li>
+<li><h4 id="客户端渲染和服务端渲染的区别"><a href="#客户端渲染和服务端渲染的区别" class="headerlink" title="客户端渲染和服务端渲染的区别"></a>客户端渲染和服务端渲染的区别</h4><ul>
+<li>最少两次请求，发起 ajax 在客户端使用模板引擎渲染</li>
+<li>客户端拿到的就是服务端已经渲染好的</li>
+</ul>
+</li>
+<li><h4 id="处理留言本案例首页数据列表渲染展示"><a href="#处理留言本案例首页数据列表渲染展示" class="headerlink" title="处理留言本案例首页数据列表渲染展示"></a>处理留言本案例首页数据列表渲染展示</h4></li>
+<li><h4 id="处理留言本案例发表留言功能"><a href="#处理留言本案例发表留言功能" class="headerlink" title="处理留言本案例发表留言功能"></a>处理留言本案例发表留言功能</h4><ul>
+<li>路径</li>
+<li>设计好的请求路径</li>
+<li>$GET 直接或查询字符串数据</li>
+<li>Node 中需要咱们自己动手来解析<ul>
+<li>url.parse()</li>
+</ul>
+</li>
+<li>/pinglun?name=jack&amp;message=hello</li>
+<li>split(‘?’)</li>
+<li>name=jack&amp;message=hello</li>
+<li>split(‘&amp;’)</li>
+<li>name=jack message=hello</li>
+<li>forEach()</li>
+<li>name=jack.split(‘=’)</li>
+<li>0 key</li>
+<li>1 value</li>
+</ul>
+</li>
+<li><h4 id="掌握如何解析请求路径中的查询字符串"><a href="#掌握如何解析请求路径中的查询字符串" class="headerlink" title="掌握如何解析请求路径中的查询字符串"></a>掌握如何解析请求路径中的查询字符串</h4><ul>
+<li>url.parse()</li>
+</ul>
+</li>
+<li><h4 id="如何在-Node-中实现服务器重定向"><a href="#如何在-Node-中实现服务器重定向" class="headerlink" title="如何在 Node 中实现服务器重定向"></a>如何在 Node 中实现服务器重定向</h4><ul>
+<li>header(‘location’)<ul>
+<li>301 永久重定向 浏览器会记住<ul>
+<li>a.com b.com</li>
+<li>a 浏览器不会请求 a 了</li>
+<li>直接去跳到 b 了</li>
+</ul>
+</li>
+<li>302 临时重定向 浏览器不记忆<ul>
+<li>a.com b.com</li>
+<li>a.com 还会请求 a</li>
+<li>a 告诉浏览器你往 b</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="Node-中的-Console（REPL）使用"><a href="#Node-中的-Console（REPL）使用" class="headerlink" title="Node 中的 Console（REPL）使用"></a>Node 中的 Console（REPL）使用</h4></li>
+</ul>
+<h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><ul>
+<li><h4 id="jQuery-的-each-和-原生的-JavaScript-方法-forEach"><a href="#jQuery-的-each-和-原生的-JavaScript-方法-forEach" class="headerlink" title="jQuery 的 each 和 原生的 JavaScript 方法 forEach"></a>jQuery 的 each 和 原生的 JavaScript 方法 forEach</h4><ul>
+<li><strong>EcmaScript 5 提供的</strong><ul>
+<li>不兼容 IE 8 </li>
+</ul>
+</li>
+<li><strong>jQuery 的 each 由 jQuery 这个第三方库提供</strong><ul>
+<li>jQuery 2 以下的版本是兼容 IE 8 的</li>
+<li>它的 each 方法主要用来遍历 jQuery 实例对象（伪数组）</li>
+<li>同时它也可以作为低版本浏览器中 forEach 替代品</li>
+<li>jQuery 的实例对象不能使用 forEach 方法，如果想要使用必须转为数组才可以使用</li>
+<li><code>[].slice.call(jQuery实例对象)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="模块中导出多个成员和导出单个成员"><a href="#模块中导出多个成员和导出单个成员" class="headerlink" title="模块中导出多个成员和导出单个成员"></a>模块中导出多个成员和导出单个成员</h4></li>
+<li><h4 id="301-和-302-状态码区别"><a href="#301-和-302-状态码区别" class="headerlink" title="301 和 302 状态码区别"></a>301 和 302 状态码区别</h4><ul>
+<li>301 永久重定向，浏览器会记住</li>
+<li>302 临时重定向</li>
+</ul>
+</li>
+<li><h4 id="exports-和-module-exports-的区别"><a href="#exports-和-module-exports-的区别" class="headerlink" title="exports 和 module.exports 的区别"></a>exports 和 module.exports 的区别</h4><ul>
+<li>每个模块中都有一个 module 对象</li>
+<li>module 对象中有一个 exports 对象</li>
+<li>我们可以把需要导出的成员都挂载到 module.exports 接口对象中</li>
+<li>也就是：<code>moudle.exports.xxx = xxx</code> 的方式</li>
+<li>但是每次都 <code>moudle.exports.xxx = xxx</code> 很麻烦，点儿的太多了</li>
+<li>所以 Node 为了你方便，同时在每一个模块中都提供了一个成员叫：<code>exports</code></li>
+<li><code>exports === module.exports</code> 结果为  <code>true</code>s</li>
+<li>所以对于：<code>moudle.exports.xxx = xxx</code> 的方式 完全可以：<code>expots.xxx = xxx</code></li>
+<li>当一个模块需要导出单个成员的时候，这个时候必须使用：<code>module.exports = xxx</code> 的方式</li>
+<li>不要使用 <code>exports = xxx</code> 不管用</li>
+<li>因为每个模块最终向外 <code>return</code> 的是 <code>module.exports</code></li>
+<li>而 <code>exports</code> 只是 <code>module.exports</code> 的一个引用</li>
+<li>所以即便你为 <code>exports = xx</code> 重新赋值，也不会影响 <code>module.exports</code></li>
+<li>但是有一种赋值方式比较特殊：<code>exports = module.exports</code> 这个用来重新建立引用关系的</li>
+<li>之所以让大家明白这个道理，是希望可以更灵活的去用它</li>
+</ul>
+</li>
+<li><h4 id="Node-是一个比肩-Java、PHP-的一个平台"><a href="#Node-是一个比肩-Java、PHP-的一个平台" class="headerlink" title="Node 是一个比肩 Java、PHP 的一个平台"></a>Node 是一个比肩 Java、PHP 的一个平台</h4><ul>
+<li>JavaScript 既能写前端也能写服务端</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">moudle.exports = &#123;</span><br><span class="line">  a: <span class="number">123</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重新建立 exports 和 module.exports 之间的引用关系</span></span><br><span class="line">exports = <span class="built_in">module</span>.exports</span><br><span class="line"></span><br><span class="line">exports.foo = <span class="string">'bar'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.mySlice = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> start = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">this</span>.length</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">1</span>) &#123;</span><br><span class="line">    start = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">2</span>) &#123;</span><br><span class="line">    start = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    end = <span class="built_in">arguments</span>[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> tmp = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt; end; i++) &#123;</span><br><span class="line">    <span class="comment">// fakeArr[0]</span></span><br><span class="line">    <span class="comment">// fakeArr[1]</span></span><br><span class="line">    <span class="comment">// fakeArr[2]</span></span><br><span class="line">    tmp.push(<span class="keyword">this</span>[i])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tmp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fakeArr = &#123;</span><br><span class="line">  <span class="number">0</span>: <span class="string">'abc'</span>,</span><br><span class="line">  <span class="number">1</span>: <span class="string">'efg'</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="string">'haha'</span>,</span><br><span class="line">  length: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所以你就得到了真正的数组。 </span></span><br><span class="line">[].mySlice.call(fakeArr)</span><br></pre></td></tr></table></figure>
+<h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><ul>
+<li><h5 id="jQuery-的-each-和-原生的-JavaScript-方法-forEach-1"><a href="#jQuery-的-each-和-原生的-JavaScript-方法-forEach-1" class="headerlink" title="jQuery 的 each 和 原生的 JavaScript 方法 forEach"></a>jQuery 的 each 和 原生的 JavaScript 方法 forEach</h5></li>
+<li><h5 id="301-和-302-的区别"><a href="#301-和-302-的区别" class="headerlink" title="301 和 302 的区别"></a>301 和 302 的区别</h5></li>
+<li><h5 id="模块中导出单个成员和导出多个成员的方式"><a href="#模块中导出单个成员和导出多个成员的方式" class="headerlink" title="模块中导出单个成员和导出多个成员的方式"></a>模块中导出单个成员和导出多个成员的方式</h5></li>
+<li><h5 id="module-exports-和-exports-的区别"><a href="#module-exports-和-exports-的区别" class="headerlink" title="module.exports 和 exports 的区别"></a>module.exports 和 exports 的区别</h5></li>
+<li><h5 id="require-方法加载规则"><a href="#require-方法加载规则" class="headerlink" title="require 方法加载规则"></a>require 方法加载规则</h5><ul>
+<li>优先从缓存加载</li>
+<li>核心模块</li>
+<li>路径形式的模块</li>
+<li>第三方模块<ul>
+<li>node_modules</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="package-json-包描述文件"><a href="#package-json-包描述文件" class="headerlink" title="package.json 包描述文件"></a>package.json 包描述文件</h5><ul>
+<li>dependencies 选项的作用:依赖</li>
+</ul>
+</li>
+<li><h5 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h5></li>
+<li><h5 id="Express-基本使用"><a href="#Express-基本使用" class="headerlink" title="Express 基本使用"></a>Express 基本使用</h5></li>
+</ul>
+</div><div class="tags"><a href="/tags/node学习笔记/">node学习笔记</a></div><div class="post-nav"><a class="pre" href="/2019/06/04/Node.js 第4天 --- express/">Node.js 第4天 --- express</a><a class="next" href="/2019/06/04/Node.js 第2天 ---代码风格，服务端渲染/">Node.js 第2天 ---代码风格，服务端渲染</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ajax/">Ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5-C3/">H5/C3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/bootstrap/">bootstrap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css-html/">css/html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/框架设计/">框架设计</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/for-in/" style="font-size: 15px;">for in</a> <a href="/tags/get-post/" style="font-size: 15px;">_get_post</a> <a href="/tags/media/" style="font-size: 15px;">_@media</a> <a href="/tags/flex/" style="font-size: 15px;">flex</a> <a href="/tags/transition/" style="font-size: 15px;">transition</a> <a href="/tags/es6笔记/" style="font-size: 15px;">es6笔记</a> <a href="/tags/H5全屏显示/" style="font-size: 15px;">H5全屏显示</a> <a href="/tags/video-autio/" style="font-size: 15px;">video,autio</a> <a href="/tags/h5表单属性/" style="font-size: 15px;">h5表单属性</a> <a href="/tags/callback/" style="font-size: 15px;">callback</a> <a href="/tags/node学习笔记/" style="font-size: 15px;">node学习笔记</a> <a href="/tags/post大文件上传/" style="font-size: 15px;">post大文件上传</a> <a href="/tags/css控制一行显示/" style="font-size: 15px;">css控制一行显示</a> <a href="/tags/选择器权重计算/" style="font-size: 15px;">选择器权重计算</a> <a href="/tags/justify-content/" style="font-size: 15px;">justify-content</a> <a href="/tags/text-shadow/" style="font-size: 15px;">text-shadow</a> <a href="/tags/bootstrap使用/" style="font-size: 15px;">bootstrap使用</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/rem-em/" style="font-size: 15px;">_rem _em</a> <a href="/tags/border绘制三角形/" style="font-size: 15px;">border绘制三角形</a> <a href="/tags/请求报文，响应报文/" style="font-size: 15px;">请求报文，响应报文</a> <a href="/tags/心得分享/" style="font-size: 15px;">心得分享</a> <a href="/tags/ps/" style="font-size: 15px;">ps</a> <a href="/tags/json/" style="font-size: 15px;">json</a> <a href="/tags/匿名函数-自执行函数/" style="font-size: 15px;">匿名函数 自执行函数</a> <a href="/tags/基本类型和引用类型/" style="font-size: 15px;">基本类型和引用类型</a> <a href="/tags/定时调用和延时调用/" style="font-size: 15px;">定时调用和延时调用</a> <a href="/tags/遮罩层/" style="font-size: 15px;">遮罩层</a> <a href="/tags/MVC和MVVM/" style="font-size: 15px;">MVC和MVVM</a> <a href="/tags/正则表达式/" style="font-size: 15px;">正则表达式</a> <a href="/tags/原型/" style="font-size: 15px;">原型</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第6天/">Node.js 第6天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第5天 --- MongoDB/">Node.js 第5天 --- MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第4天 --- express/">Node.js 第4天 --- express</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别/">Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第2天 ---代码风格，服务端渲染/">Node.js 第2天 ---代码风格，服务端渲染</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第1天 --- 模块系统，HTTP/">Node.js 第1天 --- 模块系统，HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5新增表单属性/">H5新增表单属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5多媒体标签--视频video和音频audio/">H5多媒体标签--视频video和音频audio</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5全屏显示方法及浏览器兼容解决方案/">H5全屏显示方法及浏览器兼容解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/CSS3---文本阴影/">CSS3---文本阴影</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">OuYang'blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>

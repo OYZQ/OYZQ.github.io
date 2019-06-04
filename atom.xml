@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-04T06:35:47.093Z</updated>
+  <updated>2019-06-04T06:41:44.130Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,193 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node.js 第6天</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC6%E5%A4%A9/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第6天/</id>
+    <published>2019-06-04T06:42:37.127Z</published>
+    <updated>2019-06-04T06:41:44.130Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## 知识点</p><ul><li>多人社区案例</li></ul><h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul><li>MongoDB 数据库<ul><li>灵活</li><li>不用设计数据表</li><li>业务的改动不需要关心数据表结构</li><li>DBA 架构师 级别的工程师都需要掌握这项技能<ul><li>设计</li><li>维护</li><li>分布式计算</li></ul></li></ul></li><li>mongoose<ul><li>mongodb 官方包也可以操作 MongoDB 数据库</li><li>第三方包：WordPress 项目开发团队</li><li>设计 Schema</li><li>发布 Model（得到模型构造函数）<ul><li>查询</li><li>增加</li><li>修改</li><li>删除</li></ul></li></ul></li><li>Promise<ul><li><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></li><li>callback hell 回调地狱</li><li>回调函数中套了回调函数</li><li>Promise(EcmaScript 6 中新增了一个语法 API)</li><li>容器<ul><li>异步任务（pending）</li><li>resolve</li><li>reject</li></ul></li><li>then 方法获取容器的结果（成功的，失败的）</li><li>then 方法支持链式调用</li><li>可以在 then 方法中返回一个 promise 对象，然后在后面的 then 方法中获取上一个 then 返回的 promise 对象的状态结果</li></ul></li></ul><h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>path 模块</li><li><strong>dirname 和 </strong>filename<ul><li><strong>动态的</strong> 获取当前文件或者文件所处目录的绝对路径</li><li>用来解决文件操作路劲的相对路径问题</li><li>因为在文件操作中，相对路径相对于执行 <code>node</code> 命令所处的目录</li><li>所以为了尽量避免这个问题，都建议文件操作的相对路劲都转为：<strong>动态的绝对路径</strong></li><li>方式：<code>path.join(__dirname, &#39;文件名&#39;)</code></li></ul></li><li>art-template 模板引擎(include、block、extend)<ul><li>include</li><li>extend</li><li>block</li></ul></li><li>表单同步提交和异步提交区别<ul><li>以前没有 ajax 都是这么干的，甚至有些直接就是渲染了提示信息出来了</li><li>异步提交页面不会刷新，交互方式更灵活</li></ul></li><li>Express 中配置使用 express-session 插件</li><li><p>概述案例中注册-登陆-退出的前后端交互实现流程</p></li><li><p>path 模块</p></li><li><strong>dirname 和 </strong>filename<ul><li><strong>动态的</strong> 获取当前文件或者文件所处目录的绝对路径</li><li>用来解决文件操作路劲的相对路径问题</li><li>因为在文件操作中，相对路径相对于执行 <code>node</code> 命令所处的目录</li><li>所以为了尽量避免这个问题，都建议文件操作的相对路劲都转为：<strong>动态的绝对路径</strong></li><li>方式：<code>path.join(__dirname, &#39;文件名&#39;)</code></li></ul></li><li>art-template 模板引擎(include、block、extend)<ul><li>include</li><li>extend</li><li>block</li><li>动手写一写</li></ul></li><li>表单同步提交和异步提交区别<ul><li>字符串交互</li><li>请求（报文、具有一定格式的字符串）</li><li>HTTP 就是 Web 中的沟通语言</li><li>服务器响应（字符串）</li><li>01</li><li>服务器端重定向针对异步请求无效</li></ul></li><li>Express 中配置使用 express-session 插件<ul><li>插件也是工具</li><li>你只需要明确你的目标就可以了</li><li>我们最终的目标就是使用 Session 来帮我们管理一些敏感信息数据状态，例如保存登陆状态</li><li>写 Session<ul><li>req.session.xxx = xx</li></ul></li><li>读 Session<ul><li>req.session.xxx</li></ul></li><li>删除 Session<ul><li>req.session.xxx = null</li><li>更严谨的做法是 <code>delete</code> 语法</li><li>delete req.session.xxx</li></ul></li></ul></li><li>概述案例中注册-登陆-退出的前后端交互实现流程</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## 知识点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多人社区案例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;复习&quot;&gt;&lt;a href=&quot;#复习&quot; class=&quot;headerlink&quot; title=&quot;复习&quot;&gt;&lt;/a&gt;复习&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;MongoDB 数据库&lt;ul&gt;
+&lt;li&gt;灵活
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 第5天 --- MongoDB</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC5%E5%A4%A9%20---%20MongoDB/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第5天 --- MongoDB/</id>
+    <published>2019-06-04T06:42:37.118Z</published>
+    <updated>2019-06-04T06:41:32.062Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿ ## 知识点</p><ul><li>Express</li><li>MongoDB</li><li>项目<ul><li>一天半的时间</li></ul></li></ul><h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul><li>文件路径中的 <code>/</code> 和模块标识中的 <code>/</code></li><li>Express 中配置使用 art-template 模板引擎</li><li>Express 中配置使用 body-parser</li><li>Express 中配置处理静态资源</li><li>CRUD 案例中单独提取路由模块</li></ul><h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><ul><li>回调函数<ul><li>异步编程</li><li>如果需要得到一个函数内部异步操作的结果，这是时候必须通过回调函数来获取</li><li>在调用的位置传递一个函数进来</li><li>在封装的函数内部调用传递进来的函数</li></ul></li><li>find、findIndex、forEach<ul><li>数组的遍历方法，都是对函数作为参数一种运用<ul><li>every</li></ul></li><li>some</li><li>includes</li><li>map</li><li>reduce</li></ul></li><li>package-lock.json 文件的作用<ul><li>下载速度快了</li><li>锁定版本</li></ul></li><li>JavaScript 模块化<ul><li>Node 中的 CommonJS</li><li>浏览器中的<ul><li>AMD require.js</li><li>CMD sea.js</li></ul></li><li>EcmaScript 官方在 EcmaScript 6 中增加了官方支持</li><li>EcmaScript 6</li><li>后面我们会学，编译工具</li></ul></li><li>MongoDB 数据库<ul><li>MongoDB 的数据存储结构<ul><li>数据库</li><li>集合（表）</li><li>文档（表记录）</li></ul></li></ul></li><li>MongoDB 官方有一个 mongodb 的包可以用来操作 MongoDB 数据库<ul><li>这个确实和强大，但是比较原始，麻烦，所以咱们不使用它</li></ul></li><li>mongoose<ul><li>真正在公司进行开发，使用的是 mongoose 这个第三方包</li><li>它是基于 MongoDB 官方的 mongodb 包进一步做了封装</li><li>可以提高开发效率</li><li>让你操作 MongoDB 数据库更方便</li></ul></li><li>掌握使用 mongoose 对数据集合进行基本的 CRUD</li><li>把之前的 crud 案例改为了 MongoDB 数据库版本</li><li>使用 Node 操作 mysql 数据库</li></ul><h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿ ## 知识点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Express&lt;/li&gt;
+&lt;li&gt;MongoDB&lt;/li&gt;
+&lt;li&gt;项目&lt;ul&gt;
+&lt;li&gt;一天半的时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;复习&quot;&gt;&lt;a href=&quot;#复习&quot; class=&quot;headerl
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 第4天 --- express</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC4%E5%A4%A9%20---%20express/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第4天 --- express/</id>
+    <published>2019-06-04T06:42:37.084Z</published>
+    <updated>2019-06-04T06:41:12.629Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## 知识点</p><ul><li>Express</li><li>基于文件做一套 CRUD</li></ul><h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul><li><strong>jQuery 的 each 和 原生的 JavaScript 方法 forEach</strong></li><li><strong>301 和 302 的区别</strong></li><li><strong>模块中导出单个成员和导出多个成员的方式</strong><ul><li><code>module.exports = xxx</code></li><li>通过多次：<code>exports.xxx = xxx</code></li><li>导出多个也可以：<code>moudle.exports = {多个成员}</code></li></ul></li><li><strong>module.exports 和 exports 的区别</strong><ul><li>exports 只是 module.exports 的一个引用而已，目的只是为了简化写法</li><li>每个模块最终 return 的是 module.exports</li></ul></li><li><strong>require 方法加载规则</strong><ul><li>优先从缓存加载</li><li>核心模块</li><li>路径形式的模块<ul><li><code>./xxx</code></li><li><code>../xxxx</code></li><li><code>/xxxx</code> / 在这里表示的是磁盘根路径</li><li><code>c:/xxx</code></li></ul></li><li>第三方模块<ul><li>第三方模块的标识就是第三方模块的名称（不可能有第三方模块和核心模块的名字一致）</li><li>npm<ul><li>开发人员可以把写好的框架、库发布到 npm 上</li><li>使用者在使用的时候就可以很方便的通过 npm 来下载</li></ul></li><li>使用方式：<code>var 名字 = require(&#39;npm install 的那个包名&#39;)</code></li><li>node_modules</li><li>node_modules/express</li><li>node_modules/express/package.json</li><li>node_modules/express/package.json main</li><li>如果 package.json 或者 package.json main 不成立，则查找备选项：index.js</li><li>如果以上条件都不成立，则继续进入上一级目录中的 node_modules 按照上面的规则继续查找</li><li>如果直到当前文件模块所属磁盘根目录都找不到，最后报错：<code>can not find module xxx</code></li></ul></li></ul></li><li><strong>package.json 包描述文件</strong><ul><li>就是产品的说明书</li><li><code>dependencies</code> 属性，用来保存项目的第三方包依赖项信息</li><li>所以建议每个项目都要有且只有一个 package.json (存放在项目的根目录)</li><li>我们可以通过 <code>npm init [--yes]</code> 来生成 package.json 文件</li><li>同样的，为了保存依赖项信息，我们每次安装第三方包的时候都要加上：<code>--save</code> 选项。</li></ul></li><li><strong>npm 常用命令</strong><ul><li>install</li><li>uninstall</li></ul></li><li><strong>Express 基本使用</strong></li></ul><h3 id="模块标识中的-和文件操作路径中的"><a href="#模块标识中的-和文件操作路径中的" class="headerlink" title="模块标识中的 / 和文件操作路径中的 /"></a>模块标识中的 <code>/</code> 和文件操作路径中的 <code>/</code></h3><h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><ul><li><h4 id="文件路径中的-和模块标识中的"><a href="#文件路径中的-和模块标识中的" class="headerlink" title="文件路径中的 / 和模块标识中的 /"></a>文件路径中的 <code>/</code> 和模块标识中的 <code>/</code></h4></li><li><h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4></li><li><h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul><li>art-template 模板引擎的配置</li><li>body-parser 解析表单 POST 请求体</li></ul></li><li><h4 id="详解了-express-静态服务-API"><a href="#详解了-express-静态服务-API" class="headerlink" title="详解了 express 静态服务 API"></a>详解了 express 静态服务 API</h4><ul><li>app.use(‘/public/‘, express.static(‘./public’))</li></ul></li><li><h4 id="crud"><a href="#crud" class="headerlink" title="crud"></a>crud</h4></li></ul><h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul><li>文件路径中的 <code>/</code> 和模块标识中的 <code>/</code></li><li>Express 中配置使用 art-template 模板引擎</li><li>Express 中配置使用 body-parser</li><li>Express 中配置处理静态资源</li><li>CRUD 案例中单独提取路由模块</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## 知识点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Express&lt;/li&gt;
+&lt;li&gt;基于文件做一套 CRUD&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;复习&quot;&gt;&lt;a href=&quot;#复习&quot; class=&quot;headerlink&quot; title=&quot;复习&quot;&gt;&lt;/a&gt;复习&lt;/h2&gt;&lt;ul&gt;
+&lt;li
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC3%E5%A4%A9%20---%20exports%20%E5%92%8C%20module.exports%20,each%E5%92%8CforEach%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别/</id>
+    <published>2019-06-04T06:42:37.079Z</published>
+    <updated>2019-06-04T06:42:26.913Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><ul><li><h4 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h4></li><li>增删改查</li><li>登陆</li><li>注册</li><li>头像</li><li>服务端图片</li><li>水印</li><li>图片水印</li><li>找回密码</li><li>密码修改</li></ul></li></ul><ul><li><h4 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h4><ul><li>核心模块</li><li>第三方模块</li><li>自己写的模块</li><li>加载规则以及加载机制</li><li>循环加载</li></ul></li><li><h4 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h4></li><li><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4></li><li><h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul><li>第三方 Web 开发框架</li><li>高度封装了 http 模块</li><li>更加专注于业务，而非底层细节</li><li>知其所以然</li></ul></li><li><p>增删改查</p><ul><li>使用文件来保存数据（锻炼异步编码）</li></ul></li><li><p>MongoDB</p><ul><li>（所有方法都封装好了）</li></ul></li></ul><h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul><li><h4 id="网站开发模型"><a href="#网站开发模型" class="headerlink" title="网站开发模型"></a>网站开发模型</h4><ul><li>黑盒子、哑巴</li><li>写代码让它变得更智能</li><li>按照你设计好的套路供用户使用</li></ul></li><li><h4 id="在-Node-中使用-art-template-模板引擎"><a href="#在-Node-中使用-art-template-模板引擎" class="headerlink" title="在 Node 中使用 art-template 模板引擎"></a>在 Node 中使用 art-template 模板引擎</h4><ul><li>安装</li><li>加载</li><li>template.render()</li></ul></li><li><h4 id="客户端渲染和服务端渲染的区别"><a href="#客户端渲染和服务端渲染的区别" class="headerlink" title="客户端渲染和服务端渲染的区别"></a>客户端渲染和服务端渲染的区别</h4><ul><li>最少两次请求，发起 ajax 在客户端使用模板引擎渲染</li><li>客户端拿到的就是服务端已经渲染好的</li></ul></li><li><h4 id="处理留言本案例首页数据列表渲染展示"><a href="#处理留言本案例首页数据列表渲染展示" class="headerlink" title="处理留言本案例首页数据列表渲染展示"></a>处理留言本案例首页数据列表渲染展示</h4></li><li><h4 id="处理留言本案例发表留言功能"><a href="#处理留言本案例发表留言功能" class="headerlink" title="处理留言本案例发表留言功能"></a>处理留言本案例发表留言功能</h4><ul><li>路径</li><li>设计好的请求路径</li><li>$GET 直接或查询字符串数据</li><li>Node 中需要咱们自己动手来解析<ul><li>url.parse()</li></ul></li><li>/pinglun?name=jack&amp;message=hello</li><li>split(‘?’)</li><li>name=jack&amp;message=hello</li><li>split(‘&amp;’)</li><li>name=jack message=hello</li><li>forEach()</li><li>name=jack.split(‘=’)</li><li>0 key</li><li>1 value</li></ul></li><li><h4 id="掌握如何解析请求路径中的查询字符串"><a href="#掌握如何解析请求路径中的查询字符串" class="headerlink" title="掌握如何解析请求路径中的查询字符串"></a>掌握如何解析请求路径中的查询字符串</h4><ul><li>url.parse()</li></ul></li><li><h4 id="如何在-Node-中实现服务器重定向"><a href="#如何在-Node-中实现服务器重定向" class="headerlink" title="如何在 Node 中实现服务器重定向"></a>如何在 Node 中实现服务器重定向</h4><ul><li>header(‘location’)<ul><li>301 永久重定向 浏览器会记住<ul><li>a.com b.com</li><li>a 浏览器不会请求 a 了</li><li>直接去跳到 b 了</li></ul></li><li>302 临时重定向 浏览器不记忆<ul><li>a.com b.com</li><li>a.com 还会请求 a</li><li>a 告诉浏览器你往 b</li></ul></li></ul></li></ul></li><li><h4 id="Node-中的-Console（REPL）使用"><a href="#Node-中的-Console（REPL）使用" class="headerlink" title="Node 中的 Console（REPL）使用"></a>Node 中的 Console（REPL）使用</h4></li></ul><h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><ul><li><h4 id="jQuery-的-each-和-原生的-JavaScript-方法-forEach"><a href="#jQuery-的-each-和-原生的-JavaScript-方法-forEach" class="headerlink" title="jQuery 的 each 和 原生的 JavaScript 方法 forEach"></a>jQuery 的 each 和 原生的 JavaScript 方法 forEach</h4><ul><li><strong>EcmaScript 5 提供的</strong><ul><li>不兼容 IE 8 </li></ul></li><li><strong>jQuery 的 each 由 jQuery 这个第三方库提供</strong><ul><li>jQuery 2 以下的版本是兼容 IE 8 的</li><li>它的 each 方法主要用来遍历 jQuery 实例对象（伪数组）</li><li>同时它也可以作为低版本浏览器中 forEach 替代品</li><li>jQuery 的实例对象不能使用 forEach 方法，如果想要使用必须转为数组才可以使用</li><li><code>[].slice.call(jQuery实例对象)</code></li></ul></li></ul></li><li><h4 id="模块中导出多个成员和导出单个成员"><a href="#模块中导出多个成员和导出单个成员" class="headerlink" title="模块中导出多个成员和导出单个成员"></a>模块中导出多个成员和导出单个成员</h4></li><li><h4 id="301-和-302-状态码区别"><a href="#301-和-302-状态码区别" class="headerlink" title="301 和 302 状态码区别"></a>301 和 302 状态码区别</h4><ul><li>301 永久重定向，浏览器会记住</li><li>302 临时重定向</li></ul></li><li><h4 id="exports-和-module-exports-的区别"><a href="#exports-和-module-exports-的区别" class="headerlink" title="exports 和 module.exports 的区别"></a>exports 和 module.exports 的区别</h4><ul><li>每个模块中都有一个 module 对象</li><li>module 对象中有一个 exports 对象</li><li>我们可以把需要导出的成员都挂载到 module.exports 接口对象中</li><li>也就是：<code>moudle.exports.xxx = xxx</code> 的方式</li><li>但是每次都 <code>moudle.exports.xxx = xxx</code> 很麻烦，点儿的太多了</li><li>所以 Node 为了你方便，同时在每一个模块中都提供了一个成员叫：<code>exports</code></li><li><code>exports === module.exports</code> 结果为  <code>true</code>s</li><li>所以对于：<code>moudle.exports.xxx = xxx</code> 的方式 完全可以：<code>expots.xxx = xxx</code></li><li>当一个模块需要导出单个成员的时候，这个时候必须使用：<code>module.exports = xxx</code> 的方式</li><li>不要使用 <code>exports = xxx</code> 不管用</li><li>因为每个模块最终向外 <code>return</code> 的是 <code>module.exports</code></li><li>而 <code>exports</code> 只是 <code>module.exports</code> 的一个引用</li><li>所以即便你为 <code>exports = xx</code> 重新赋值，也不会影响 <code>module.exports</code></li><li>但是有一种赋值方式比较特殊：<code>exports = module.exports</code> 这个用来重新建立引用关系的</li><li>之所以让大家明白这个道理，是希望可以更灵活的去用它</li></ul></li><li><h4 id="Node-是一个比肩-Java、PHP-的一个平台"><a href="#Node-是一个比肩-Java、PHP-的一个平台" class="headerlink" title="Node 是一个比肩 Java、PHP 的一个平台"></a>Node 是一个比肩 Java、PHP 的一个平台</h4><ul><li>JavaScript 既能写前端也能写服务端</li></ul></li></ul><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">moudle.exports = &#123;</span><br><span class="line">  a: <span class="number">123</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重新建立 exports 和 module.exports 之间的引用关系</span></span><br><span class="line">exports = <span class="built_in">module</span>.exports</span><br><span class="line"></span><br><span class="line">exports.foo = <span class="string">'bar'</span></span><br></pre></td></tr></table></figure><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.mySlice = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> start = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> end = <span class="keyword">this</span>.length</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">1</span>) &#123;</span><br><span class="line">    start = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">2</span>) &#123;</span><br><span class="line">    start = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    end = <span class="built_in">arguments</span>[<span class="number">1</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> tmp = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt; end; i++) &#123;</span><br><span class="line">    <span class="comment">// fakeArr[0]</span></span><br><span class="line">    <span class="comment">// fakeArr[1]</span></span><br><span class="line">    <span class="comment">// fakeArr[2]</span></span><br><span class="line">    tmp.push(<span class="keyword">this</span>[i])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> tmp</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fakeArr = &#123;</span><br><span class="line">  <span class="number">0</span>: <span class="string">'abc'</span>,</span><br><span class="line">  <span class="number">1</span>: <span class="string">'efg'</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="string">'haha'</span>,</span><br><span class="line">  length: <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所以你就得到了真正的数组。 </span></span><br><span class="line">[].mySlice.call(fakeArr)</span><br></pre></td></tr></table></figure><h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><ul><li><h5 id="jQuery-的-each-和-原生的-JavaScript-方法-forEach-1"><a href="#jQuery-的-each-和-原生的-JavaScript-方法-forEach-1" class="headerlink" title="jQuery 的 each 和 原生的 JavaScript 方法 forEach"></a>jQuery 的 each 和 原生的 JavaScript 方法 forEach</h5></li><li><h5 id="301-和-302-的区别"><a href="#301-和-302-的区别" class="headerlink" title="301 和 302 的区别"></a>301 和 302 的区别</h5></li><li><h5 id="模块中导出单个成员和导出多个成员的方式"><a href="#模块中导出单个成员和导出多个成员的方式" class="headerlink" title="模块中导出单个成员和导出多个成员的方式"></a>模块中导出单个成员和导出多个成员的方式</h5></li><li><h5 id="module-exports-和-exports-的区别"><a href="#module-exports-和-exports-的区别" class="headerlink" title="module.exports 和 exports 的区别"></a>module.exports 和 exports 的区别</h5></li><li><h5 id="require-方法加载规则"><a href="#require-方法加载规则" class="headerlink" title="require 方法加载规则"></a>require 方法加载规则</h5><ul><li>优先从缓存加载</li><li>核心模块</li><li>路径形式的模块</li><li>第三方模块<ul><li>node_modules</li></ul></li></ul></li><li><h5 id="package-json-包描述文件"><a href="#package-json-包描述文件" class="headerlink" title="package.json 包描述文件"></a>package.json 包描述文件</h5><ul><li>dependencies 选项的作用:依赖</li></ul></li><li><h5 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h5></li><li><h5 id="Express-基本使用"><a href="#Express-基本使用" class="headerlink" title="Express 基本使用"></a>Express 基本使用</h5></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;ul&gt;
+&lt;li&gt;&lt;h4 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h4&gt;&lt;/li&gt;
+&lt;li&gt;增删改查&lt;/li&gt;
+&lt;li&gt;登陆&lt;/li&gt;
+&lt;li&gt;注册&lt;/li&gt;
+&lt;li&gt;头像&lt;
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 第2天 ---代码风格，服务端渲染</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC2%E5%A4%A9%20---%E4%BB%A3%E7%A0%81%E9%A3%8E%E6%A0%BC%EF%BC%8C%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第2天 ---代码风格，服务端渲染/</id>
+    <published>2019-06-04T06:42:37.075Z</published>
+    <updated>2019-06-04T06:40:47.908Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿### 代码风格</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="string">'bar'</span></span><br><span class="line"><span class="keyword">var</span> foo =<span class="string">'bar'</span></span><br><span class="line"><span class="keyword">var</span> foo= <span class="string">'bar'</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="string">"bar"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hello'</span>) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span> )&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'hello'</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>为了约定大家的代码风格，所以在社区中诞生了一些比较规范的代码风格规范：dnsajkndkjsabnjkdnjksandjknsajkdnjkasnjkdnjksandjknsajkdnjksajkdnas</p><ul><li><h5 id="推荐的两种代码风格"><a href="#推荐的两种代码风格" class="headerlink" title="推荐的两种代码风格"></a>推荐的两种代码风格</h5><ul><li><a href="https://standardjs.com/" target="_blank" rel="noopener">JavaScript Standard Style</a></li><li>Airbnb JavaScript Style</li></ul></li></ul><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li><h4 id="代码风格"><a href="#代码风格" class="headerlink" title="代码风格"></a>代码风格</h4></li><li><h4 id="无分号"><a href="#无分号" class="headerlink" title="无分号"></a>无分号</h4><ul><li><code>(</code></li><li><code>[</code></li><li>`</li><li>最好前面补分号，避免一些问题</li><li>《编写可维护的 JavaScript》</li><li>不仅是功能，还要写的漂亮</li></ul></li><li><h4 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h4><ul><li>说白了就是在服务端使用模板引擎</li><li>模板引擎最早诞生于服务端，后来才发展到了前端</li></ul></li><li><h4 id="服务端渲染和客户端渲染的区别"><a href="#服务端渲染和客户端渲染的区别" class="headerlink" title="服务端渲染和客户端渲染的区别"></a>服务端渲染和客户端渲染的区别</h4><ul><li>客户端渲染不利于 SEO 搜索引擎优化</li><li>服务端渲染是可以被爬虫抓取到的，客户端异步渲染是很难被爬虫抓取到的</li><li>所以你会发现真正的网站既不是纯异步也不是纯服务端渲染出来的</li><li>而是两者结合来做的</li><li>例如京东的商品列表就采用的是服务端渲染，目的是为了 SEO 搜索引擎优化</li><li>而它的商品评论列表为了用户体验，而且也不需要 SEO 优化，所以采用是客户端渲染</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿### 代码风格&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node.js 第1天 --- 模块系统，HTTP</title>
+    <link href="http://yoursite.com/2019/06/04/Node.js%20%E7%AC%AC1%E5%A4%A9%20---%20%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F%EF%BC%8CHTTP/"/>
+    <id>http://yoursite.com/2019/06/04/Node.js 第1天 --- 模块系统，HTTP/</id>
+    <published>2019-06-04T06:42:37.070Z</published>
+    <updated>2019-06-04T06:40:13.526Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿### 上午总结</p><ul><li><p>基本网站开发能力</p><ul><li>服务端</li><li>前端</li><li>运维部署</li></ul></li><li><h3 id="Node-js-是什么"><a href="#Node-js-是什么" class="headerlink" title="Node.js 是什么"></a>Node.js 是什么</h3><ul><li>JavaScript 运行时环境</li><li>既不是语言，也不是框架，它是一个平台</li><li>简单来讲就是Node.js可以解析和执行JavaScript代码</li><li>以前只有浏览器可以解析和执行JavaScript代码</li><li>也就是说现在的JavaScript完全可以脱离浏览器来运行，一切都归功于：Node.js</li></ul></li><li><h3 id="Node-js-中的-JavaScript"><a href="#Node-js-中的-JavaScript" class="headerlink" title="Node.js 中的 JavaScript"></a>Node.js 中的 JavaScript</h3><ul><li><strong>没有 BOM、DOM</strong></li><li>EcmaScript 只有基本的 JavaScript 语言部分</li><li>在 Node 中为 JavaScript 提供了一些服务器级别的 API<ul><li>文件操作的能力</li><li>网络服务的构建</li><li>网络通信</li><li>http服务器</li><li>等处理…..</li></ul></li></ul></li><li><h3 id="构建于Chrome的V8引擎之上"><a href="#构建于Chrome的V8引擎之上" class="headerlink" title="构建于Chrome的V8引擎之上"></a>构建于Chrome的V8引擎之上</h3><ul><li>代码只是具有特定格式的字符串而已</li><li>引擎可以认识它，引擎可以帮你去解析和执行</li><li>Google Chrome的V8引擎是目前公认的解析执行JavaScript代码最快的</li><li>Node.js的作者把Google Chrome中的V8引擎移植了出来，开发了一个独立的JavaScript运行时环境</li></ul></li><li><h3 id="Node-js能做什么"><a href="#Node-js能做什么" class="headerlink" title="Node.js能做什么"></a>Node.js能做什么</h3><ul><li>web服务后台啊</li><li>命令行工具<ul><li>npm(node)</li><li>git(c语言)</li><li>hexo(node)</li><li>。。。</li></ul></li></ul></li></ul><h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><ul><li><h3 id="Node-中的-JavaScript"><a href="#Node-中的-JavaScript" class="headerlink" title="Node 中的 JavaScript"></a>Node 中的 JavaScript</h3><ul><li>EcmaScript<ul><li>变量</li><li>方法</li><li>数据类型</li><li>内置对象</li><li>Array</li><li>Object</li><li>Date</li><li>Math</li></ul></li><li><h3 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h3><ul><li>在 Node 中<strong>没有全局作用域</strong>的概念</li><li>在 Node 中，只能通过 require 方法来加载执行多个 JavaScript 脚本文件</li><li>require 加载只能是执行其中的代码，文件与文件之间由于是模块作用域，所以不会有污染的问题<ul><li>模块完全是封闭的</li><li>外部无法访问内部</li><li>内部也无法访问外部</li></ul></li><li>模块作用域固然带来了一些好处，可以加载执行多个文件，可以完全避免变量命名冲突污染的问题</li><li>但是某些情况下，模块与模块是需要进行通信的</li><li>在每个模块中，都提供了一个对象：<code>exports</code></li><li>该对象默认是一个空对象</li><li>你要做的就是把需要被外部访问使用的成员手动的挂载到 <code>exports</code> 接口对象中</li><li>然后谁来 <code>require</code> 这个模块，谁就可以得到模块内部的 <code>exports</code> 接口对象</li><li>还有其它的一些规则，具体后面讲，以及如何在项目中去使用这种编程方式，会通过后面的案例来处理</li></ul></li><li><h3 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h3><ul><li>核心模块是由 Node 提供的一个个的具名的模块，它们都有自己特殊的名称标识，例如<ul><li><strong>fs</strong> 文件操作模块</li><li><strong>http</strong> 网络服务构建模块</li><li><strong>os</strong> 操作系统信息模块</li><li><strong>path</strong> 路径处理模块</li><li>。。。。</li></ul></li><li>所有核心模块在使用的时候都必须手动的先使用 <code>require</code> 方法来加载，然后才可以使用，例如：<ul><li><code>var fs = require(&#39;fs&#39;)</code></li></ul></li></ul></li></ul></li><li><h3 id="http"><a href="#http" class="headerlink" title="http"></a>http</h3><ul><li><h5 id="require"><a href="#require" class="headerlink" title="require"></a>require</h5></li><li><h5 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h5><ul><li>ip 地址定位计算机</li><li>端口号定位具体的应用程序</li></ul></li><li><h5 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a>Content-Type</h5><ul><li>服务器最好把每次响应的数据是什么内容类型都告诉客户端，而且要正确的告诉</li><li>不同的资源对应的 Content-Type 是不一样，具体参照：<a href="http://tool.oschina.net/commons" target="_blank" rel="noopener">http://tool.oschina.net/commons</a></li><li>对于文本类型的数据，最好都加上编码，目的是为了防止中文解析乱码问题</li></ul></li><li><h5 id="通过网络发送文件"><a href="#通过网络发送文件" class="headerlink" title="通过网络发送文件"></a>通过网络发送文件</h5><ul><li>发送的并不是文件，本质上来讲发送是文件的内容</li><li>当浏览器收到服务器响应内容之后，就会根据你的 Content-Type 进行对应的解析处理</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿### 上午总结&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基本网站开发能力&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务端&lt;/li&gt;
+&lt;li&gt;前端&lt;/li&gt;
+&lt;li&gt;运维部署&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;Node-js-是什么&quot;&gt;&lt;a href=&quot;#Node-js
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node学习笔记" scheme="http://yoursite.com/tags/node%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>H5新增表单属性</title>
@@ -381,167 +568,6 @@
     
     
       <category term="心得分享" scheme="http://yoursite.com/tags/%E5%BF%83%E5%BE%97%E5%88%86%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用css中的border绘制三角形的方法和原理</title>
-    <link href="http://yoursite.com/2019/06/04/%E4%BD%BF%E7%94%A8css%E4%B8%AD%E7%9A%84border%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E5%8E%9F%E7%90%86/"/>
-    <id>http://yoursite.com/2019/06/04/使用css中的border绘制三角形的方法和原理/</id>
-    <published>2019-06-04T06:10:46.410Z</published>
-    <updated>2019-06-04T06:08:23.860Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>首先看看怎么实现的贴上代码;</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.sjx</span>&#123;</span></span><br><span class="line"><span class="undefined">            width: 0px;</span></span><br><span class="line"><span class="undefined">            height: 0px;</span></span><br><span class="line"><span class="undefined">            border-width: 40px;</span></span><br><span class="line"><span class="undefined">            border-style: solid;</span></span><br><span class="line"><span class="undefined">            border-color: transparent transparent transparent red;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sjx"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h4 id="效果图："><a href="#效果图：" class="headerlink" title="效果图："></a>效果图：</h4><p><img src="https://img-blog.csdnimg.cn/20190413170526421.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><hr></p><h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><p><strong>主要代码就是style中的border样式</strong>。首先宽高设为0，border-width就是三角形的高度，border-color（上，右，下，左）这里把前三个设置为透明，第四个设置为红色，所以三角形方向是向右的。<br>为了方便理解，这里把border-color四个颜色都设置出来看看<br><img src="https://img-blog.csdnimg.cn/20190413171100309.png" alt="在这里插入图片描述"></p><hr><p><strong>这里可以这么理解</strong>:由于div宽高设置为0，而边框为40px就会出现一个80*80的正方形，上下左右平分则是<strong>四个三角形</strong>。但如果不设置下边框而设置其他三个边框则会如下图：<br><img src="https://img-blog.csdnimg.cn/20190413171502153.png" alt="在这里插入图片描述"></p><hr><p>从这里可以看出没了下边框就变成了40*80的长方形，所以<strong>实质上这个正方形还是4个40*80的矩形拼成的。</strong><br>但是如果只设置左右，或者上下的边框则什么也没有，因为div长宽都为0，则显示不出来，这里之所以会显示是因为上下和左右至少各有一个，会互相赋值，比如上边框高度为40px由于没有宽度则不显示，此时如果设置一个左边框会把左边框的高40px<strong>赋值</strong>给上边框的框则会显示出来。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h3&gt;&lt;p&gt;首先看看怎么实现的贴上代码;&lt;/p&gt;
-&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
-      
-    
-    </summary>
-    
-      <category term="css/html" scheme="http://yoursite.com/categories/css-html/"/>
-    
-    
-      <category term="border绘制三角形" scheme="http://yoursite.com/tags/border%E7%BB%98%E5%88%B6%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css选择器权重及其计算规则</title>
-    <link href="http://yoursite.com/2019/06/04/css%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E5%8F%8A%E5%85%B6%E8%AE%A1%E7%AE%97%E8%A7%84%E5%88%99/"/>
-    <id>http://yoursite.com/2019/06/04/css选择器权重及其计算规则/</id>
-    <published>2019-06-04T06:10:46.401Z</published>
-    <updated>2019-06-04T06:07:36.838Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h1><hr><p>@[toc]</p><hr><h3 id="选择器类型"><a href="#选择器类型" class="headerlink" title="选择器类型"></a>选择器类型</h3><ul><li>ID　　#id</li><li>class　　.class</li><li><p>标签　　p</p></li><li><p>通用　　*</p></li><li><p>属性　　[type=”text”]</p></li><li><p>伪类　　：hover</p></li><li><p>伪元素　　::first-line</p></li><li><p>子选择器、相邻选择器</p></li></ul><h3 id="css选择器权重值"><a href="#css选择器权重值" class="headerlink" title="css选择器权重值"></a>css选择器权重值</h3><table><thead><tr><th>选择器</th><th>权重</th></tr></thead><tbody><tr><td>!important</td><td>权重</td></tr><tr><td>!important</td><td>Infinity(无限大)</td></tr><tr><td>行列样式</td><td>1000</td></tr><tr><td>Id选择器</td><td>0100</td></tr><tr><td>Class选择器/属性/伪类</td><td>0010</td></tr><tr><td>标签选择器</td><td>0001</td></tr><tr><td>*通配符选择器</td><td>0000 (大于默认样式与继承验样式)</td></tr><tr><td>继承样式</td><td>权重最小(比*通配符还小)</td></tr></tbody></table><blockquote><p><strong>注意</strong>：选择器的权重值不是一个确定的值，例如标签选择器的权重值为1，但是这个1是一个256进制数，就是0到255后+1才是1。就是说权重值2和1中间差了255。这表示256个权重值为1的选择器加一起才抵得上一个权重为2的，这在后面权重计算有用。</p></blockquote><h2 id="还有需要注意的是，！important的权重值虽然是正无穷，但其实也是可也计算的，比如正无穷-1或者-1，就是要比正无穷大，在计算机中正无穷的值，都是一个有界的。不是数学上无界的一个慨念！"><a href="#还有需要注意的是，！important的权重值虽然是正无穷，但其实也是可也计算的，比如正无穷-1或者-1，就是要比正无穷大，在计算机中正无穷的值，都是一个有界的。不是数学上无界的一个慨念！" class="headerlink" title="还有需要注意的是，！important的权重值虽然是正无穷，但其实也是可也计算的，比如正无穷+1或者*1，就是要比正无穷大，在计算机中正无穷的值，都是一个有界的。不是数学上无界的一个慨念！"></a>还有需要注意的是，！important的权重值虽然是正无穷，但其实也是可也计算的，比如正无穷+1或者*1，就是要比正无穷大，在计算机中正无穷的值，都是一个有界的。不是数学上无界的一个慨念！</h2><h3 id="权重计算方法"><a href="#权重计算方法" class="headerlink" title="权重计算方法"></a>权重计算方法</h3><blockquote><p>一般而言，选择器越特殊，它的优先级越高。也就是选择器指向的越准确，它的优先级就越高。单一选择器直接比较权重，多个选择器则需要计算。<br> 复杂的计算方法：</p></blockquote><ul><li>用1表示派生选择器的优先级<ul><li>用10表示类选择器的优先级</li><li>用100标示ID选择器的优先级<pre><code>-  div.test1 .span var 优先级 1+10 +10 +1</code></pre><ul><li>span#xxx .songs li 优先级1+100 + 10 + 1</li><li>#xxx li 优先级 100 +1</li></ul></li></ul></li></ul><h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p><img src="https://img-blog.csdnimg.cn/20190417202810188.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190417202817586.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;css选择器&quot;&gt;&lt;a href=&quot;#css选择器&quot; class=&quot;headerlink&quot; title=&quot;css选择器&quot;&gt;&lt;/a&gt;css选择器&lt;/h1&gt;&lt;hr&gt;
-
-&lt;p&gt;@[toc]&lt;/p&gt;
-&lt;hr&gt;
-
-&lt;h3 id=&quot;选择器类型&quot;&gt;&lt;a href=&quot;#选择器类型&quot;
-      
-    
-    </summary>
-    
-      <category term="css/html" scheme="http://yoursite.com/categories/css-html/"/>
-    
-    
-      <category term="选择器权重计算" scheme="http://yoursite.com/tags/%E9%80%89%E6%8B%A9%E5%99%A8%E6%9D%83%E9%87%8D%E8%AE%A1%E7%AE%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>css控制超出一行内容显示省略号</title>
-    <link href="http://yoursite.com/2019/06/04/css%E6%8E%A7%E5%88%B6%E8%B6%85%E5%87%BA%E4%B8%80%E8%A1%8C%E5%86%85%E5%AE%B9%E6%98%BE%E7%A4%BA%E7%9C%81%E7%95%A5%E5%8F%B7/"/>
-    <id>http://yoursite.com/2019/06/04/css控制超出一行内容显示省略号/</id>
-    <published>2019-06-04T06:10:46.392Z</published>
-    <updated>2019-06-04T06:06:55.150Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在前端开发过程中，经常会遇到文字超过一行内容的情况，要求隐藏超出部分并且以省略号显示。<br>像这样：<br><img src="https://img-blog.csdnimg.cn/20190524085233199.png" alt="在这里插入图片描述"></p><h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>主要依赖下面三个属性实现</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 规定段落中的文本不进行换行： */</span></span><br><span class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</span><br><span class="line"><span class="comment">/* 内容会被修剪，并且其余内容是不可见的。 */</span></span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br><span class="line"><span class="comment">/* 显示省略符号来代表被修剪的文本。 */</span></span><br><span class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span></span><br></pre></td></tr></table></figure><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        body &#123;</span></span><br><span class="line"><span class="undefined">            width: 500px;</span></span><br><span class="line"><span class="undefined">            text-align: center;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        div&#123;</span></span><br><span class="line"><span class="css">            <span class="comment">/* 规定段落中的文本不进行换行： */</span></span></span><br><span class="line"><span class="undefined">            white-space: nowrap;</span></span><br><span class="line"><span class="css">            <span class="comment">/* 内容会被修剪，并且其余内容是不可见的。 */</span></span></span><br><span class="line"><span class="undefined">            overflow: hidden;</span></span><br><span class="line"><span class="css">            <span class="comment">/* 显示省略符号来代表被修剪的文本。 */</span></span></span><br><span class="line"><span class="undefined">            text-overflow: ellipsis </span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>“世界很复杂，百度更懂你”，百度翻译拥有网页版和手机APP等多种产品形态，此外还针对开发者提供开放云接口服务，日均响应上亿次翻译请求。除文本翻译外，结合用户多样性的翻译需求，推出网页翻译、网络释义、海量例句、权威词典、离线翻译、语音翻译、对话翻译、实用口语、拍照翻译、AR翻译、趣味配音等功能，同时还针对对译文质量要求较高的用户，提供人工翻译服务，让用户畅享每一次翻译体验。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p>效果如图：<br><img src="https://img-blog.csdnimg.cn/20190524085425664.png" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在前端开发过程中，经常会遇到文字超过一行内容的情况，要求隐藏超出部分并且以省略号显示。&lt;br&gt;像这样：&lt;br&gt;&lt;img src=&quot;https
-      
-    
-    </summary>
-    
-      <category term="css/html" scheme="http://yoursite.com/categories/css-html/"/>
-    
-    
-      <category term="css控制一行显示" scheme="http://yoursite.com/tags/css%E6%8E%A7%E5%88%B6%E4%B8%80%E8%A1%8C%E6%98%BE%E7%A4%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端必备PS技巧</title>
-    <link href="http://yoursite.com/2019/06/04/%E5%89%8D%E7%AB%AF%E5%BF%85%E5%A4%87PS%E6%8A%80%E5%B7%A7/"/>
-    <id>http://yoursite.com/2019/06/04/前端必备PS技巧/</id>
-    <published>2019-06-04T06:10:46.385Z</published>
-    <updated>2019-06-04T06:09:52.062Z</updated>
-    
-    <content type="html"><![CDATA[<p>PS在前端主要有两方面的应用：<strong>1：测量图像大小、距离  2：切图</strong><br>测量不用说大家平时开发都需要用，而切图也是前端必备技能。我们作为前端会比UI更清楚我们需要的图片，有时候需要修改也可以自己动手，不必处处麻烦UI，也提高了工作效率。</p><p>那我们从零开始吧！</p><h3 id="1-下载工具PS"><a href="#1-下载工具PS" class="headerlink" title="1.下载工具PS"></a>1.下载工具PS</h3><p>在这里分享一下正版PS安装包，内含注册码的，链接失效了可以下方评论。<br>下载链接：链接：<a href="https://pan.baidu.com/s/1oIeHrcH2VBGx8ujO2MGiKA" target="_blank" rel="noopener">https://pan.baidu.com/s/1oIeHrcH2VBGx8ujO2MGiKA</a><br>提取码：adoz </p><h3 id="2-设置工具"><a href="#2-设置工具" class="headerlink" title="2. 设置工具"></a>2. 设置工具</h3><p>为了使用更加方面我们可以先设置一下一些窗口格式。<br>在上面菜单栏点击窗口把：图层，信息，历史记录勾选上<br>在视图窗口把标尺勾选上。<br><img src="https://img-blog.csdnimg.cn/2019033119500113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190331195052320.png" alt="在这里插入图片描述"></p><h3 id="3-测量和取色"><a href="#3-测量和取色" class="headerlink" title="3.测量和取色"></a>3.测量和取色</h3><p>  <strong>【测量宽高】工具：参考线，矩形选框，信息面板。</strong></p><p>1  从标尺上拉出参考线（在标尺上按住鼠标左键不松往你想要地方拉，就会出现一根线，上下左右都可以，也可以不拉，拉了会更精确些，选框会自动吸附到参考线上） </p><p>2  找到矩形选框，选中你要测量的地方，选中的时候你可以看两个地方：1 鼠标位置有显示宽高  2 信息面板也有显示。不过当你松开鼠标，就只有信息面板有显示信息了，如下。<br><img src="https://img-blog.csdnimg.cn/2019033119544584.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> <strong>【取色】：取色器+吸管工具</strong></p><p>1 点击取色器，会出现一个面板，这个时候把鼠标放在图片上会发现自动变成了吸管工具，不用专门去找，然后点击你想要取的颜色，面板上就出现你想要的信息。（还可以用取色器检查你的按钮或者背景是不是是纯色）<br><img src="https://img-blog.csdnimg.cn/20190331195907313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id="4-切图-：切片工具"><a href="#4-切图-：切片工具" class="headerlink" title="4.切图 ：切片工具"></a>4.切图 ：切片工具</h3><p>现在工具栏找到切片工具：<br><img src="https://img-blog.csdnimg.cn/2019033120022452.png" alt="在这里插入图片描述"><br>选取需要切的范围，然后在菜单栏—&gt;文件—&gt;转为web格式<br><img src="https://img-blog.csdnimg.cn/20190331200428322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">然后调整图片格式和质量按自己需求来：<br><img src="https://img-blog.csdnimg.cn/20190331200550645.png" alt="在这里插入图片描述"><br>然后存储到相应位置使用即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;PS在前端主要有两方面的应用：&lt;strong&gt;1：测量图像大小、距离  2：切图&lt;/strong&gt;&lt;br&gt;测量不用说大家平时开发都需要用，而切图也是前端必备技能。我们作为前端会比UI更清楚我们需要的图片，有时候需要修改也可以自己动手，不必处处麻烦UI，也提高了工作效率。&lt;/
-      
-    
-    </summary>
-    
-      <category term="css/html" scheme="http://yoursite.com/categories/css-html/"/>
-    
-    
-      <category term="ps" scheme="http://yoursite.com/tags/ps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS3 @media 查询</title>
-    <link href="http://yoursite.com/2019/06/04/CSS3@media%E6%9F%A5%E8%AF%A2/"/>
-    <id>http://yoursite.com/2019/06/04/CSS3@media查询/</id>
-    <published>2019-06-04T05:49:05.861Z</published>
-    <updated>2019-06-04T05:48:25.821Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="CSS3-media-查询"><a href="#CSS3-media-查询" class="headerlink" title="CSS3 @media 查询"></a>CSS3 @media 查询</h3><hr><p><strong>首先贴一个例子：</strong></p><p>如果文档宽度小于 300 像素则修改背景颜色(background-color):</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">300px</span>) &#123;</span><br><span class="line">    <span class="selector-tag">body</span> &#123;</span><br><span class="line">        <span class="attribute">background-color</span>:lightblue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h4 id="定义和使用"><a href="#定义和使用" class="headerlink" title="定义和使用"></a>定义和使用</h4><p>使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。</p><p>@media 可以针对不同的<strong>屏幕尺寸</strong>设置不同的样式，特别是如果你需要设置设计<strong>响应式的页面</strong>，@media 是非常有用的。</p><p>当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。</p><hr><h4 id="Media所有参数汇总"><a href="#Media所有参数汇总" class="headerlink" title="Media所有参数汇总"></a>Media所有参数汇总</h4><p>   <li>width:浏览器可视宽度。<br>   </li><li>height:浏览器可视高度。<br>   </li><li>device-width:设备屏幕的宽度。<br>   </li><li>device-height:设备屏幕的高度。<br>   </li><li>orientation:检测设备目前处于横向还是纵向状态。<br>   </li><li>aspect-ratio:检测浏览器可视宽度和高度的比例。(例如：aspect-ratio:16/9)<br>   </li><li>device-aspect-ratio:检测设备的宽度和高度的比例。<br>   </li><li>color:检测颜色的位数。（例如：min-color:32就会检测设备是否拥有32位颜色）<br>   </li><li>color-index:检查设备颜色索引表中的颜色，他的值不能是负数。<br>   </li><li>monochrome:检测单色楨缓冲区域中的每个像素的位数。（这个太高级，估计咱很少会用的到）<br>   </li><li>resolution:检测屏幕或打印机的分辨率。(例如：min-resolution:300dpi或min-resolution:118dpcm)。<br>   </li><li>grid：检测输出的设备是网格的还是位图设备。</li></p><p><br></p><hr><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p><br></p><h4 id="准备工作1：设置Meta标签"><a href="#准备工作1：设置Meta标签" class="headerlink" title="准备工作1：设置Meta标签"></a>准备工作1：设置Meta标签</h4><p>首先我们在使用Media的时候需要先设置下面这段代码，来兼容移动设备的展示效果：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</span><br></pre></td></tr></table></figure><p>这段代码的几个参数解释：</p><p>   <strong>width = device-width</strong>：宽度等于当前设备的宽度</p><p>   <strong>initial-scale</strong>：初始的缩放比例（默认设置为1.0）  </p><p>   <strong>minimum-scale</strong>：允许用户缩放到的最小比例（默认设置为1.0）    </p><p>   <strong>maximum-scale</strong>：允许用户缩放到的最大比例（默认设置为1.0）   </p><p>   <strong>user-scalable</strong>：用户是否可以手动缩放（默认设置为no，因为我们不希望用户放大缩小页面） </p><p><br></p><h4 id="准备工作2：加载兼容文件JS"><a href="#准备工作2：加载兼容文件JS" class="headerlink" title="准备工作2：加载兼容文件JS"></a>准备工作2：加载兼容文件JS</h4><p>因为IE8既不支持HTML5也不支持CSS3 Media，所以我们需要加载两个JS文件，来保证我们的代码实现兼容效果：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[<span class="keyword">if</span> lt IE <span class="number">9</span>]&gt;</span><br><span class="line">  &lt;script src=<span class="string">"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">  &lt;script src=<span class="string">"https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure><p><br></p><h4 id="准备工作3：设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加"><a href="#准备工作3：设置IE渲染方式默认为最高-这部分可以选择添加也可以不添加" class="headerlink" title="准备工作3：设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)"></a>准备工作3：设置IE渲染方式默认为最高(这部分可以选择添加也可以不添加)</h4><p>现在有很多人的IE浏览器都升级到IE9以上了，所以这个时候就有又很多诡异的事情发生了，例如现在是IE9的浏览器，但是浏览器的文档模式却是IE8:<br> <img src="https://img-blog.csdnimg.cn/2019041213440485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="\[1.png\]"></p><p>为了防止这种情况，我们需要下面这段代码来让IE的文档模式永远都是最新的：</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;</span><br></pre></td></tr></table></figure><p><br></p><h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">body &#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">background-color</span><span class="selector-pseudo">:lightgreen</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css">@<span class="keyword">media</span> screen and (max-width: <span class="number">300px</span>) &#123;</span></span><br><span class="line"><span class="undefined">    body &#123;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">background-color</span><span class="selector-pseudo">:lightblue</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>重置浏览器查看大小。当浏览器窗口的宽度小于 300 像素时，背景颜色会变成淡蓝，否则是淡绿色。<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"resize_window()"</span> <span class="attr">value</span>=<span class="string">"查看效果"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SCRIPT</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">&lt;!--</span></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">resize_window</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.open (<span class="string">'http://www.w3cschool.cc/try/demo_source/trycss3_media_example1.htm'</span>,<span class="string">'newwindow'</span>,<span class="string">'height=299,width=299,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no'</span>)</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="actionscript"><span class="comment">//写成一行</span></span></span><br><span class="line"><span class="undefined">--&gt;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">SCRIPT</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="https://img-blog.csdnimg.cn/20190412140249355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20190412140300307.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>参考：<a href="http://www.520ued.com" target="_blank" rel="noopener">http://www.520ued.com</a><br><a href="http://www.runoob.com/cssref/css3-pr-mediaquery.html" target="_blank" rel="noopener">http://www.runoob.com/cssref/css3-pr-mediaquery.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;CSS3-media-查询&quot;&gt;&lt;a href=&quot;#CSS3-media-查询&quot; class=&quot;headerlink&quot; title=&quot;CSS3 @media 查询&quot;&gt;&lt;/a&gt;CSS3 @media 查询&lt;/h3&gt;&lt;hr&gt;
-
-&lt;p&gt;&lt;strong&gt;首先贴一个例子：&lt;/
-      
-    
-    </summary>
-    
-      <category term="H5/C3" scheme="http://yoursite.com/categories/H5-C3/"/>
-    
-    
-      <category term="_@media" scheme="http://yoursite.com/tags/media/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>rem、em的区别与使用方法</title>
-    <link href="http://yoursite.com/2019/06/04/rem%E3%80%81em%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/"/>
-    <id>http://yoursite.com/2019/06/04/rem、em的区别与使用方式/</id>
-    <published>2019-06-04T05:42:17.791Z</published>
-    <updated>2019-06-04T06:12:31.709Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 前言</p><p><strong>我们先来看看比较重要的两点：</strong></p><ul><li><p><strong>rem与em的本质区别</strong><br> rem(root element)是参照<strong>html</strong>的font-size,em(element)是参照<strong>父元素</strong>的font-size</p></li><li><p><strong>使用rem与em的优点</strong></p><p>  以rem/em为单位比px更方便,屏幕尺寸发生变化时只需要更改html/body基数即可,不需要再重新给每个标签写不同的font-size</p><hr></li></ul><h2 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h2><blockquote><p>使用rem为单位,系统处理时(将rem转化为px)只会看html的font-size</p></blockquote><p>   在使用media query做响应式布局时(以bootstrap为例)：</p><ul><li><p>a.首先要做的是确定rem的基数(即html的font-size),一般都是以10px为基数(方便计算),这个可以根据自己的习惯来.</p><ul><li>b.确定html基准百分数(rem参照下html的字体大小采取百分数形式),百分数是自己设定的基数除以默认字体大小(16px)的值.比如以10px为基数时,基准百分数就是: 10px/16px=62.5%;即设置html的font-size为62.5%;</li></ul></li><li><p>c.当html的基准百分数设置之后,元素使用rem为单位时就是以基数(a中设置的基数值)为基础单位,换算方式为: 10px=1rem;比如要设置一个p标签的字体大小为20px,用rem表示就是2rem(公式: 以rem为单位的值=想要设置的字体大小(20px)/基数值(10px)=2rem).</p></li><li><p>d.响应式实现: 使用@media 在监测到屏幕尺寸发生变化时只需为html设置不同的基数值即可</p></li></ul><p>如下面例子: 在屏幕宽度小于414px时以8px为基数,非响应式下(415px-1365px)以10px为基数;大于1366px时以12px为基数</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">  font-size: 62.5%; // 以10px为基数,此时class为a的标签字体大小为20px</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">414px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;</span><br><span class="line">    font-size: 50%; // 以8px为基数,此时class为a的标签字体大小为16px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">1366px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">html</span>&#123;</span><br><span class="line">    font-size: 75%; // 以12px为基数,此时class为a的标签字体大小为24px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><h2 id="em"><a href="#em" class="headerlink" title="em"></a>em</h2><blockquote><p>使用em为单位,系统处理时(将em转化为px)只会看父元素（本文以body为例）的font-size</p></blockquote><h3 id="使用px为基准"><a href="#使用px为基准" class="headerlink" title="使用px为基准"></a>使用px为基准</h3><p>此时只需要设置一个基数即可,然后接下来使用时只需要用想要的字体大小除以设置的基数值即为以em为单位的值;如: 设置em基数为10px,要设置一个标签的字体大小为15px,则em=想要设置的值(15px)/基数(10px)=1.5em.例:</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  font-size: 10px; // 以10px为基数,此时class为a的标签字体大小为20px</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">414px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">body</span>&#123;</span><br><span class="line">    font-size: 8px; // 以8px为基数,此时class为a的标签字体大小为16px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">1366px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">body</span>&#123;</span><br><span class="line">    font-size: 12px; // 以12px为基数,此时class为a的标签字体大小为24px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="使用百分比为基准"><a href="#使用百分比为基准" class="headerlink" title="使用百分比为基准"></a>使用百分比为基准</h3><p> 使用方式同上面以rem为单位的步骤,例:</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  font-size: 62.5%; // 以10px为基数,此时class为a的标签字体大小为20px</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="selector-class">.a</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">414px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">body</span>&#123;</span><br><span class="line">    font-size: 50%; // 以8px为基数,此时class为a的标签字体大小为16px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">1366px</span>)&#123;</span><br><span class="line">  <span class="selector-tag">body</span>&#123;</span><br><span class="line">    font-size: 75%; // 以12px为基数,此时class为a的标签字体大小为24px</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p> <strong>说明: 具体使用时其实两者差不多,rem也可以直接以px为基准单位,只是两者参照标签不同,使用时需注意</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 前言&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;我们先来看看比较重要的两点：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;rem与em的本质区别&lt;/strong&gt;&lt;br&gt; rem(root element)是参照&lt;strong&gt;html&lt;/strong&gt;的
-      
-    
-    </summary>
-    
-      <category term="css/html" scheme="http://yoursite.com/categories/css-html/"/>
-    
-    
-      <category term="_rem _em" scheme="http://yoursite.com/tags/rem-em/"/>
     
   </entry>
   

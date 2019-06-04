@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Node.js 第4天 --- express | OuYang'blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.0/jquery.min.js"></script><link rel="icon" mask sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><link rel="alternate" type="application/atom+xml" href="/atom.xml"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Node.js 第4天 --- express</h1><a id="logo" href="/.">OuYang'blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Node.js 第4天 --- express</h1><div class="post-meta">Jun 4, 2019<span> | </span><span class="category"><a href="/categories/node-js/">node.js</a></span></div><div class="post-content"><p>﻿## 知识点</p>
+<ul>
+<li>Express</li>
+<li>基于文件做一套 CRUD</li>
+</ul>
+<h2 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h2><ul>
+<li><strong>jQuery 的 each 和 原生的 JavaScript 方法 forEach</strong></li>
+<li><strong>301 和 302 的区别</strong></li>
+<li><strong>模块中导出单个成员和导出多个成员的方式</strong><ul>
+<li><code>module.exports = xxx</code></li>
+<li>通过多次：<code>exports.xxx = xxx</code></li>
+<li>导出多个也可以：<code>moudle.exports = {多个成员}</code></li>
+</ul>
+</li>
+<li><strong>module.exports 和 exports 的区别</strong><ul>
+<li>exports 只是 module.exports 的一个引用而已，目的只是为了简化写法</li>
+<li>每个模块最终 return 的是 module.exports</li>
+</ul>
+</li>
+<li><strong>require 方法加载规则</strong><ul>
+<li>优先从缓存加载</li>
+<li>核心模块</li>
+<li>路径形式的模块<ul>
+<li><code>./xxx</code></li>
+<li><code>../xxxx</code></li>
+<li><code>/xxxx</code> / 在这里表示的是磁盘根路径</li>
+<li><code>c:/xxx</code></li>
+</ul>
+</li>
+<li>第三方模块<ul>
+<li>第三方模块的标识就是第三方模块的名称（不可能有第三方模块和核心模块的名字一致）</li>
+<li>npm<ul>
+<li>开发人员可以把写好的框架、库发布到 npm 上</li>
+<li>使用者在使用的时候就可以很方便的通过 npm 来下载</li>
+</ul>
+</li>
+<li>使用方式：<code>var 名字 = require(&#39;npm install 的那个包名&#39;)</code></li>
+<li>node_modules</li>
+<li>node_modules/express</li>
+<li>node_modules/express/package.json</li>
+<li>node_modules/express/package.json main</li>
+<li>如果 package.json 或者 package.json main 不成立，则查找备选项：index.js</li>
+<li>如果以上条件都不成立，则继续进入上一级目录中的 node_modules 按照上面的规则继续查找</li>
+<li>如果直到当前文件模块所属磁盘根目录都找不到，最后报错：<code>can not find module xxx</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>package.json 包描述文件</strong><ul>
+<li>就是产品的说明书</li>
+<li><code>dependencies</code> 属性，用来保存项目的第三方包依赖项信息</li>
+<li>所以建议每个项目都要有且只有一个 package.json (存放在项目的根目录)</li>
+<li>我们可以通过 <code>npm init [--yes]</code> 来生成 package.json 文件</li>
+<li>同样的，为了保存依赖项信息，我们每次安装第三方包的时候都要加上：<code>--save</code> 选项。</li>
+</ul>
+</li>
+<li><strong>npm 常用命令</strong><ul>
+<li>install</li>
+<li>uninstall</li>
+</ul>
+</li>
+<li><strong>Express 基本使用</strong></li>
+</ul>
+<h3 id="模块标识中的-和文件操作路径中的"><a href="#模块标识中的-和文件操作路径中的" class="headerlink" title="模块标识中的 / 和文件操作路径中的 /"></a>模块标识中的 <code>/</code> 和文件操作路径中的 <code>/</code></h3><h2 id="上午总结"><a href="#上午总结" class="headerlink" title="上午总结"></a>上午总结</h2><ul>
+<li><h4 id="文件路径中的-和模块标识中的"><a href="#文件路径中的-和模块标识中的" class="headerlink" title="文件路径中的 / 和模块标识中的 /"></a>文件路径中的 <code>/</code> 和模块标识中的 <code>/</code></h4></li>
+<li><h4 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h4></li>
+<li><h4 id="Express"><a href="#Express" class="headerlink" title="Express"></a>Express</h4><ul>
+<li>art-template 模板引擎的配置</li>
+<li>body-parser 解析表单 POST 请求体</li>
+</ul>
+</li>
+<li><h4 id="详解了-express-静态服务-API"><a href="#详解了-express-静态服务-API" class="headerlink" title="详解了 express 静态服务 API"></a>详解了 express 静态服务 API</h4><ul>
+<li>app.use(‘/public/‘, express.static(‘./public’))</li>
+</ul>
+</li>
+<li><h4 id="crud"><a href="#crud" class="headerlink" title="crud"></a>crud</h4></li>
+</ul>
+<h2 id="下午总结"><a href="#下午总结" class="headerlink" title="下午总结"></a>下午总结</h2><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>文件路径中的 <code>/</code> 和模块标识中的 <code>/</code></li>
+<li>Express 中配置使用 art-template 模板引擎</li>
+<li>Express 中配置使用 body-parser</li>
+<li>Express 中配置处理静态资源</li>
+<li>CRUD 案例中单独提取路由模块</li>
+</ul>
+</div><div class="tags"><a href="/tags/node学习笔记/">node学习笔记</a></div><div class="post-nav"><a class="pre" href="/2019/06/04/Node.js 第5天 --- MongoDB/">Node.js 第5天 --- MongoDB</a><a class="next" href="/2019/06/04/Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别/">Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"><input type="hidden" name="sitesearch" value="http://yoursite.com"></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Ajax/">Ajax</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/H5-C3/">H5/C3</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/bootstrap/">bootstrap</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/css-html/">css/html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/es6/">es6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/">http</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/node-js/">node.js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/php/">php</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/框架设计/">框架设计</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/for-in/" style="font-size: 15px;">for in</a> <a href="/tags/get-post/" style="font-size: 15px;">_get_post</a> <a href="/tags/media/" style="font-size: 15px;">_@media</a> <a href="/tags/flex/" style="font-size: 15px;">flex</a> <a href="/tags/transition/" style="font-size: 15px;">transition</a> <a href="/tags/es6笔记/" style="font-size: 15px;">es6笔记</a> <a href="/tags/H5全屏显示/" style="font-size: 15px;">H5全屏显示</a> <a href="/tags/video-autio/" style="font-size: 15px;">video,autio</a> <a href="/tags/h5表单属性/" style="font-size: 15px;">h5表单属性</a> <a href="/tags/callback/" style="font-size: 15px;">callback</a> <a href="/tags/node学习笔记/" style="font-size: 15px;">node学习笔记</a> <a href="/tags/post大文件上传/" style="font-size: 15px;">post大文件上传</a> <a href="/tags/css控制一行显示/" style="font-size: 15px;">css控制一行显示</a> <a href="/tags/选择器权重计算/" style="font-size: 15px;">选择器权重计算</a> <a href="/tags/justify-content/" style="font-size: 15px;">justify-content</a> <a href="/tags/text-shadow/" style="font-size: 15px;">text-shadow</a> <a href="/tags/bootstrap使用/" style="font-size: 15px;">bootstrap使用</a> <a href="/tags/闭包/" style="font-size: 15px;">闭包</a> <a href="/tags/rem-em/" style="font-size: 15px;">_rem _em</a> <a href="/tags/border绘制三角形/" style="font-size: 15px;">border绘制三角形</a> <a href="/tags/请求报文，响应报文/" style="font-size: 15px;">请求报文，响应报文</a> <a href="/tags/心得分享/" style="font-size: 15px;">心得分享</a> <a href="/tags/ps/" style="font-size: 15px;">ps</a> <a href="/tags/json/" style="font-size: 15px;">json</a> <a href="/tags/匿名函数-自执行函数/" style="font-size: 15px;">匿名函数 自执行函数</a> <a href="/tags/基本类型和引用类型/" style="font-size: 15px;">基本类型和引用类型</a> <a href="/tags/定时调用和延时调用/" style="font-size: 15px;">定时调用和延时调用</a> <a href="/tags/遮罩层/" style="font-size: 15px;">遮罩层</a> <a href="/tags/MVC和MVVM/" style="font-size: 15px;">MVC和MVVM</a> <a href="/tags/正则表达式/" style="font-size: 15px;">正则表达式</a> <a href="/tags/原型/" style="font-size: 15px;">原型</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第6天/">Node.js 第6天</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第5天 --- MongoDB/">Node.js 第5天 --- MongoDB</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第4天 --- express/">Node.js 第4天 --- express</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别/">Node.js 第3天 --- exports 和 module.exports ,each和forEach的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第2天 ---代码风格，服务端渲染/">Node.js 第2天 ---代码风格，服务端渲染</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/Node.js 第1天 --- 模块系统，HTTP/">Node.js 第1天 --- 模块系统，HTTP</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5新增表单属性/">H5新增表单属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5多媒体标签--视频video和音频audio/">H5多媒体标签--视频video和音频audio</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/H5全屏显示方法及浏览器兼容解决方案/">H5全屏显示方法及浏览器兼容解决方案</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/04/CSS3---文本阴影/">CSS3---文本阴影</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> 友情链接</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2019 <a href="/." rel="nofollow">OuYang'blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
