@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[webpack打包进行丑化压缩遇到（TypeError_ Cannot read property 'compilation' of undefined）问题]]></title>
+    <url>%2F2019%2F07%2F27%2Fwebpack%E6%89%93%E5%8C%85%E8%BF%9B%E8%A1%8C%E4%B8%91%E5%8C%96%E5%8E%8B%E7%BC%A9%E9%81%87%E5%88%B0%EF%BC%88TypeError_%20Cannot%20read%20property%20'compilation'%20of%20undefined%EF%BC%89%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[## 问题 在使用vue官方推荐打包插件UglifyjsWebpackPlugin对webpack打包时遇到TypeError: Cannot read property ‘compilation’ of undefined 解决办法很明显，这是node一些包的版本对应不上的问题 将项目中的该包升级或者降级到1.0.0版本 1npm i uglifyjs-webpack-plugin@1.0.0 --save]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue动态绑定class]]></title>
     <url>%2F2019%2F07%2F22%2Fvue%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9Aclass%2F</url>
     <content type="text"><![CDATA[#### 1.v-bind:class 一个对象，以动态地切换 class： 动态绑定active类，当isactive == index为true时使用active类1&lt;p :class="&#123;'active':isactive == index&#125;"&gt;&#123;&#123;item.name&#125;&#125;&lt;/p&gt; 2.data数据中定义isactive定义isactive并且初始化12345data()&#123; return &#123; isactive:0, &#125; &#125; 3.样式动态绑定对象在p标签父元素上绑定了点击事件click()，点击时isactive赋值，使isactive == index，则active类生效12345methods: &#123; click(index)&#123; this.isactive = index; &#125;&#125;]]></content>
