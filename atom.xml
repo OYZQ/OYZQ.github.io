@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-08T10:58:18.908Z</updated>
+  <updated>2019-08-09T08:49:31.415Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用vue-cli脚手架开发APP的步骤</title>
+    <link href="http://yoursite.com/2019/08/09/%E7%94%A8vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6%E5%BC%80%E5%8F%91APP%E7%9A%84%E6%AD%A5%E9%AA%A4/"/>
+    <id>http://yoursite.com/2019/08/09/用vue-cli脚手架开发APP的步骤/</id>
+    <published>2019-08-09T08:47:41.711Z</published>
+    <updated>2019-08-09T08:49:31.415Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## 前言</p><p>本文主要记录vue-cli脚手架开发app的步骤，如果还未安装vue-cli的请查看<a href="https://cli.vuejs.org/zh/guide/installation.html" target="_blank" rel="noopener">vue-cli官方文档</a>有详细过程。</p><p>项目地址：<a href="https://github.com/OYZQ/vue-cli-dome/settings" target="_blank" rel="noopener">vue-cli-demo</a></p><h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>点击链接实现界面跳转，下方底部可以改成导航栏，中间内容自己修改。<br><img src="https://img-blog.csdnimg.cn/20190730163620742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190730163639685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-创建模板"><a href="#1-创建模板" class="headerlink" title="1.创建模板"></a>1.创建模板</h3><p>运行以下命令来创建一个新项目(项目名自己随意)：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create test3</span><br></pre></td></tr></table></figure><p>你会被提示选取一个 preset。你可以选默认的包含了基本的 Babel + ESLint 设置的 preset，也可以选“手动选择特性”来选取需要的特性。这里直接回车即可。<br><img src="https://img-blog.csdnimg.cn/20190730155849487.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>等待下载，下载完会看到看到如下图所示，根据提示，<code>cd hello-world</code>进入目录，然后<code>npm run serve</code>启动<br><img src="https://img-blog.csdnimg.cn/20190730160448365.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>启动好，默认8080端口，用浏览器打开网址，就可以看到vue-cli的模板启动成功<br><img src="https://img-blog.csdnimg.cn/20190730160534851.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h3 id="2-删除无用文件"><a href="#2-删除无用文件" class="headerlink" title="2.删除无用文件"></a>2.删除无用文件</h3><p>用编辑器打开项目文件，看到目录结构如下：<br><img src="https://img-blog.csdnimg.cn/20190730160708561.png" alt="在这里插入图片描述"><br>src/assets下面图片就是打开页面的logo图片没用可以连带着assets目录一起删除。</p><p>src/components下面有一个HelloWorld.vue文件就是刚才浏览器打开的页面可以删除。</p><p>src下面的App.vue文件修改如下：<br>只留下简单框架，内容都删了<br><img src="https://img-blog.csdnimg.cn/20190730161137575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>public/index.html修改如下：<br>也只留下简单模板<br><img src="https://img-blog.csdnimg.cn/20190730161300500.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后浏览器页面一片空白，可以开始写代码</p><h3 id="3-写代码"><a href="#3-写代码" class="headerlink" title="3.写代码"></a>3.写代码</h3><p>components下面随意写几个页面，目录结构如下：<br><img src="https://img-blog.csdnimg.cn/20190730161850418.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190730161946928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后实现路由跳转使用<code>vue-router</code>,首先<code>npm install vue-router --save</code>安装<br><img src="https://img-blog.csdnimg.cn/20190730162214442.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>在src下建src/router/router.js文件管理路由，注册路由<br><img src="https://img-blog.csdnimg.cn/20190730162342265.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>然后在src下面的main.js里面引用，并且挂载<br><img src="https://img-blog.csdnimg.cn/20190730162504149.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>最后一步，修改App.vue文件<br>只是加了一行代码，router-view 可以当做是一个容器，它渲染的组件是你使用 vue-router 指定的。<br><img src="https://img-blog.csdnimg.cn/20190730163038223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## 前言&lt;/p&gt;
+&lt;p&gt;本文主要记录vue-cli脚手架开发app的步骤，如果还未安装vue-cli的请查看&lt;a href=&quot;https://cli.vuejs.org/zh/guide/installation.html&quot; target=&quot;_blank&quot; rel=&quot;n
+      
+    
+    </summary>
+    
+      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
+    
+    
+      <category term="用vue-cli脚手架开发APP的步骤" scheme="http://yoursite.com/tags/%E7%94%A8vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6%E5%BC%80%E5%8F%91APP%E7%9A%84%E6%AD%A5%E9%AA%A4/"/>
+    
+  </entry>
   
   <entry>
     <title>关于Img标签绑定_src不显示图片</title>
@@ -523,34 +549,6 @@
     
     
       <category term="双向绑定" scheme="http://yoursite.com/tags/%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>单向绑定</title>
-    <link href="http://yoursite.com/2019/06/18/%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A/"/>
-    <id>http://yoursite.com/2019/06/18/单向绑定/</id>
-    <published>2019-06-18T00:14:33.273Z</published>
-    <updated>2019-06-18T00:16:32.226Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 简单理解</p><p>单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。</p><blockquote><p>MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。</p></blockquote><p>例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上：<br><img src="https://img-blog.csdnimg.cn/20190617142336722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p>经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了：<br><img src="https://img-blog.csdnimg.cn/20190617142355371.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><h2 id="下面我们在vue中看看"><a href="#下面我们在vue中看看" class="headerlink" title="下面我们在vue中看看"></a>下面我们在vue中看看</h2><p>首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'Robot'</span>,</span><br><span class="line">    age: <span class="number">15</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>而负责显示的是DOM节点可以用和来引用Model的属性：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"vm"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello, &#123;&#123; name &#125;&#125;!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>You are &#123;&#123; age &#125;&#125; years old!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><p>最后一步是用Vue把两者关联起来。要特别注意的是，在<head><meta name="generator" content="Hexo 3.8.0">内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在<head><meta name="generator" content="Hexo 3.8.0">内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下：</head></head></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 引用jQuery --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 引用Vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/js/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">// 初始化代码:</span></span></span><br><span class="line"><span class="javascript">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">        el: <span class="string">'#vm'</span>,</span></span><br><span class="line"><span class="undefined">        data: &#123;</span></span><br><span class="line"><span class="javascript">            name: <span class="string">'Robot'</span>,</span></span><br><span class="line"><span class="undefined">            age: 15</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;);</span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.vm = vm;</span></span><br><span class="line"><span class="undefined">&#125;);</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"vm"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello, &#123;&#123; name &#125;&#125;!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>You are &#123;&#123; age &#125;&#125; years old!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p>其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\<div>节点</div></p><p>在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。</p><p>然后，data属性指定了Model，我们初始化了Model的两个属性<code>name</code>和<code>age</code>，在View内部的\</p><p>节点上，可以直接用<code></code>引用Model的某个属性。</p><p>一切正常的话，我们在浏览器中访问<code>http://localhost:3000/static/index.html</code>，可以看到页面输出为：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hello, Robot!</span><br><span class="line">You are 15 years old!</span><br></pre></td></tr></table></figure><p>如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.vm.name = <span class="string">'Bob'</span></span><br></pre></td></tr></table></figure><p>执行上述代码，可以观察到页面立刻发生了变化，原来的<code>Hello, Robot!</code>自动变成了<code>Hello, Bob!</code>。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。<strong>这种Model到View的绑定我们称为单向绑定。</strong></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 简单理解&lt;/p&gt;
-&lt;p&gt;单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，M
-      
-    
-    </summary>
-    
-      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
-    
-    
-      <category term="单向绑定" scheme="http://yoursite.com/tags/%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A/"/>
     
   </entry>
   
