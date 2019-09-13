@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端面试题：值类型和引用类型的传递]]></title>
+    <url>%2F2019%2F09%2F13%2F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92%2F</url>
+    <content type="text"><![CDATA[题目如下： 1234567891011121314151617&lt;script type="text/javascript"&gt; function Person(name,age,salary) &#123; this.name = name; this.age = age; this.salary = salary; &#125; function f1(person) &#123; person.name = "ls"; person = new Person("aa",18,10); &#125; var p = new Person("zs",18,1000); console.log(p.name); f1(p); console.log(p.name)&lt;/script&gt; 分析代码：首先定义了一个构造函数Person，然后定义了一个普通函数f1，var p = new Person(&quot;zs&quot;,18,1000);这句话new了一个对象，所以第一个打印出来的是：zs;f1(p);这句话把p这个对象传入f1，person.name = &quot;ls&quot;;把p的name属性改为”ls”,person = new Person(&quot;aa&quot;,18,10);这句话重新new了一个对象，并且把person指向到了这个新的对象上，但这对p没有影响，所以最后打印出来的是”ls” 画图说明： 结果：]]></content>
+      <categories>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[redux的工作流程以及subscribe的作用]]></title>
     <url>%2F2019%2F09%2F03%2Fredux%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%BB%A5%E5%8F%8Asubscribe%E7%9A%84%E4%BD%9C%E7%94%A8%2F</url>
     <content type="text"><![CDATA[## redux的工作流程 使用函数createStore创建store数据点 123456789import &#123; createStore &#125; from 'redux';import reducer from './reducer'const store = createStore( reducer, window.__REDUX_DEVTOOLS_EXTENSION__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION__() );export default store; 创建Reducer。它要改变的组件，它获取state和action，生成新的state 1234567891011121314151617181920212223242526import &#123; CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM &#125; from './actionTpyes'const defaultState = &#123; inputValue:'', list: []&#125;// reducer 可以接收state，但是绝不能修改stateexport default (state = defaultState,action) =&gt; &#123; if(action.type === CHANGE_INPUT_VALUE) &#123; const newState = JSON.parse(JSON.stringify(state)); newState.inputValue = action.value; return newState &#125; if(action.type === ADD_TODO_ITEM) &#123; const newState = JSON.parse(JSON.stringify(state)); newState.list.push(newState.inputValue); newState.inputValue = '' return newState &#125; if(action.type === DELETE_TODO_ITEM) &#123; const newState = JSON.parse(JSON.stringify(state)); newState.list.splice(action.index,1) return newState &#125; return state;&#125; 用subscribe监听每次修改情况 1234constructor(props) &#123; super(props); store.subscribe(this.handleStoreChange)&#125; dispatch执行，reducer(currentState,action)处理当前dispatch后的传入的action.type并返回给currentState处理后的state，通过currentListeners.forEach(v=&gt;v())执行监听函数，并最后返回当前 action状态 1234567handleItemDelete(index) &#123; const action = &#123; type: DELETE_TODO_ITEM, index &#125; store.dispatch(action)&#125; subscribe的作用subscribe 这个函数是用来去订阅 store 的变化，比如你每次对 store 进行 dispatch(action) 都会触发 subscribe 注册的函数调用，这个在实际情况不是必须要的，看自己的应用场景，比如你想监控 store 的全局变化时 可以用 subscript 订阅一下，然后作一些反应 每次通过dispatch 修改数据的时候，其实只是数据发生了变化，如果不手动调用 render方法，页面上的内容是不会发生变化的。 但是每次dispatch之后都手动调用很麻烦啊，所以就使用了发布订阅模式，监听数据变化来自动渲染。]]></content>
@@ -243,17 +254,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
-    <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
-      <categories>
-        <category>css/html</category>
-      </categories>
-      <tags>
-        <tag>dev-server</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[单向绑定]]></title>
     <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
     <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
@@ -265,14 +265,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
-    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
-    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+    <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
+    <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
       <categories>
-        <category>H5/C3</category>
+        <category>css/html</category>
       </categories>
       <tags>
-        <tag>clientX</tag>
+        <tag>dev-server</tag>
       </tags>
   </entry>
   <entry>
@@ -284,6 +284,17 @@
       </categories>
       <tags>
         <tag>图片验证码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
+    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+      <categories>
+        <category>H5/C3</category>
+      </categories>
+      <tags>
+        <tag>clientX</tag>
       </tags>
   </entry>
   <entry>
