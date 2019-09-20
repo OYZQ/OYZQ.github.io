@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[栈和堆的区别 栈和堆的区别]]></title>
+    <url>%2F2019%2F09%2F20%2F%E6%A0%88%E5%92%8C%E5%A0%86%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[### 一、程序的内存分配方式不同 栈区（stack）：编译器自动分配释放，存放函数的参数值，局部变量的值等，其操作方式类似于数据结构的栈。 堆区（heap）：一般是由程序员分配释放，若程序员不释放的话，程序结束时可能由OS回收，值得注意的是他与数据结构的堆是两回事，分配方式倒是类似于数据结构的链表。二、申请方式不同 stack 由系统自动分配，heap 需要程序员自己申请。 C 中用函数 malloc分配空间，用 free 释放，C++用 new 分配，用 delete 释放。三、申请后系统的响应不同 栈：只要栈的剩余空间大于所申请的空间，系统将为程序提供内存，否则将报异常提示栈溢出。 堆：首先应该知道操作系统有一个记录内存地址的链表，当系统收到程序的申请时，遍历该链表，寻找第一个空间大于所申请的空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序。另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样代码中的 delete 或 free 语句就能够正确的释放本内存空间。另外，由于找到的堆结点的大小不一定正好等于申请的大小，系统会将多余的那部分重新放入空闲链表中。四、 申请的大小限制不同 栈：在 windows 下，栈是向低地址扩展的数据结构，是一块连续的内存区域，栈顶的地址和栈的最大容量是系统预先规定好的，能从栈获得的空间较小。 堆：堆是向高地址扩展的数据结构，是不连续的内存区域，这是由于系统是由链表在存储空闲内存地址，自然堆就是不连续的内存区域，且链表的遍历也是从低地址向高地址遍历的，堆得大小受限于计算机系统的有效虚拟内存空间，由此空间，堆获得的空间比较灵活，也比较大。五、申请的效率不同 栈：栈由系统自动分配，速度快，但是程序员无法控制。 堆：堆是有程序员自己分配，速度较慢，容易产生碎片，不过用起来方便。六、堆和栈的存储内容不同 栈：在函数调用时，第一个进栈的是主函数中函数调用后的下一条指令的地址，然后函数的各个参数，在大多数的 C 编译器中，参数是从右往左入栈的，当本次函数调用结束后，局部变量先出栈，然后是参数，最后栈顶指针指向最开始存的地址，也就是主函数中的下一条指令。 堆：一般是在堆的头部用一个字节存放堆的大小，具体内容由程序员安排。]]></content>
+      <categories>
+        <category>计算机基础</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[前端面试题：封装函数进行字符串驼峰命名的转换]]></title>
+    <url>%2F2019%2F09%2F17%2F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%B0%81%E8%A3%85%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E7%9A%84%E8%BD%AC%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[## 题目：封装函数进行字符串驼峰命名的转换 解：代码如下： 12345678910111213141516&lt;script type="text/javascript"&gt; function toString(foo) &#123; var foo = foo; var arr = foo.split('-'); for (var i = 1;i&lt;arr.length;i++) &#123; arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substr(1,arr[length-1]) &#125; return(arr.join('')) &#125; console.log(toString( "get-element-by-id")) //结果：getElementById&lt;/script&gt; 补充：split() 方法用于把一个字符串分割成字符串数组。charAt() 方法可返回指定位置的字符。toUpperCase() 方法用于把字符串转换为大写。substr() 方法可在字符串中抽取从 start 下标开始的指定数目的字符。]]></content>
+      <categories>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[React项目--如何mock数据？]]></title>
     <url>%2F2019%2F09%2F15%2FReact%E9%A1%B9%E7%9B%AE--%E5%A6%82%E4%BD%95mock%E6%95%B0%E6%8D%AE%EF%BC%9F%2F</url>
     <content type="text"><![CDATA[## 前言 在开发项目时，前端需要和后端对接数据，但有时后端并没有写好数据，前端还需要继续往下开发，这时候就需要mock数据了。 如何mock数据？如下代码，在input获得焦点时调用getList()方法。1234567const mapDispathToProps = (dispatch) =&gt; &#123; return &#123; handleInputFocus() &#123; dispatch(actionCreators.getList()) &#125; &#125;&#125; getList()方法是通过Ajax获取数据，此时后端并没有写好，所以自己mock一个数据。12345678910export const getList = () =&gt; &#123; return (dispatch) =&gt; &#123; axios.get('/api/headerList.json').then((res) =&gt; &#123; const data = res.data; console.log(data) &#125;).catch(() =&gt; &#123; console.log('error') &#125;) &#125;&#125; axios.get(&#39;/api/headerList.json&#39;)这句代码，计算机会首先去src目录下寻找/api/headerList.json,没有找到然后去public目录下找，此时我们在public目录下建立/api/headerList.json文件，文件如下： 1234&#123; "success":true, "data":["微信","支付宝","蚂蚁金服","被骗","借呗","诈骗","盗窃","pandas","TensorFlow","PyTorch","Caffe","scikit-learn","Python","Keras","pyecharts","ggplot","Matplotlib","Gensim","Bokeh","Theano","Scrapy","SciPy","Plotly","NumPy","XGBoost","是","他","有","光大永明","我","要","人","Android","女","大","不","着","男","它","二","于","中","java","把","上","这","下","的","了","来"]&#125; 此时返回的数据就是以上数据，通过console.log(res.data)打印数据如下图： 这样mock数据就成功了。]]></content>
@@ -265,17 +284,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
-    <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
-      <categories>
-        <category>css/html</category>
-      </categories>
-      <tags>
-        <tag>dev-server</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[单向绑定]]></title>
     <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
     <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
@@ -287,14 +295,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
-    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
-    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+    <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
+    <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
       <categories>
-        <category>H5/C3</category>
+        <category>css/html</category>
       </categories>
       <tags>
-        <tag>clientX</tag>
+        <tag>dev-server</tag>
       </tags>
   </entry>
   <entry>
@@ -306,6 +314,17 @@
       </categories>
       <tags>
         <tag>图片验证码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
+    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+      <categories>
+        <category>H5/C3</category>
+      </categories>
+      <tags>
+        <tag>clientX</tag>
       </tags>
   </entry>
   <entry>
