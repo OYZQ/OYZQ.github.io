@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-23T15:36:45.443Z</updated>
+  <updated>2019-09-24T15:03:16.085Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端面试题：如何画一条0.5px的线</title>
+    <link href="http://yoursite.com/2019/09/24/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%BB%E4%B8%80%E6%9D%A10.5px%E7%9A%84%E7%BA%BF/"/>
+    <id>http://yoursite.com/2019/09/24/前端面试题：如何画一条0.5px的线/</id>
+    <published>2019-09-24T15:01:56.845Z</published>
+    <updated>2019-09-24T15:03:16.085Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## 前言</p><p>理论上1px已经是最小单位了，那如何画一条0.5px的线呢？<br>有以下两种方法</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li><strong>采用meta viewport的方式</strong></li></ol><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5"</span>/&gt;</span></span><br></pre></td></tr></table></figure><p>这样子就能缩放到原来的0.5倍，如果是1px那么就会变成0.5px</p><p>要记得viewport只针对于移动端，只在移动端上才能看到效果</p><ol start="2"><li><strong>采用transform: scale()的方式</strong></li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform: scale(<span class="number">0.5</span>,<span class="number">0.5</span>);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## 前言&lt;/p&gt;
+&lt;p&gt;理论上1px已经是最小单位了，那如何画一条0.5px的线呢？&lt;br&gt;有以下两种方法&lt;/p&gt;
+&lt;h2 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法&quot;&gt;&lt;/a&gt;解决方法&lt;/h2&gt;&lt;o
+      
+    
+    </summary>
+    
+      <category term="面试题" scheme="http://yoursite.com/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+    
+      <category term="如何画一条0.5px的线" scheme="http://yoursite.com/tags/%E5%A6%82%E4%BD%95%E7%94%BB%E4%B8%80%E6%9D%A10-5px%E7%9A%84%E7%BA%BF/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里前端笔试：请编写一个JavaScript 函数toRGB，它的作用是转换CSS中常用的颜色编码</title>
@@ -517,33 +544,6 @@
     
     
       <category term="兄弟组件间通信" scheme="http://yoursite.com/tags/%E5%85%84%E5%BC%9F%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何用 async_await 来处理异步</title>
-    <link href="http://yoursite.com/2019/06/26/%E5%A6%82%E4%BD%95%E7%94%A8%20async_await%20%E6%9D%A5%E5%A4%84%E7%90%86%E5%BC%82%E6%AD%A5/"/>
-    <id>http://yoursite.com/2019/06/26/如何用 async_await 来处理异步/</id>
-    <published>2019-06-26T05:07:11.179Z</published>
-    <updated>2019-06-26T05:09:15.821Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 前言</p><p>ES7的async/await语法在2016年就已经提出来了，用async/ await来发送异步请求，从服务端获取数据，代码很简洁，async/await 也已经被标准化。</p><h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>先说一下async的用法，它作为一个关键字放到函数前面，用于表示函数是一个异步函数，因为async就是异步的意思， 异步函数也就意味着该函数的执行不会阻塞后面代码的执行。 写一个async 函数：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> <span class="string">'hello world'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>语法很简单，就是在函数前面加上async 关键字，来表示它是异步的，那怎么调用呢？async 函数也是函数，平时我们怎么使用函数就怎么使用它，直接加括号调用就可以了，为了表示它没有阻塞它后面代码的执行，我们在async 函数调用之后加一句console.log;</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br><span class="line">timeout();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'虽然在后面，但是我先执行'</span>);</span><br></pre></td></tr></table></figure><p>打开浏览器控制台，我们看到了<br><img src="https://img-blog.csdnimg.cn/20190623192742137.png" alt="在这里插入图片描述"></p><p>async 函数 timeout  调用了，但是没有任何输出，它不是应该返回 ‘hello world’,  先不要着急， 看一看timeout()执行返回了什么？ 把上面的 timeout() 语句改为console.log(timeout())</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(timeout());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'虽然在后面，但是我先执行'</span>);</span><br></pre></td></tr></table></figure><p>继续看控制台<br><img src="https://img-blog.csdnimg.cn/20190623192902838.png" alt="在这里插入图片描述"><br>原来async 函数返回的是一个promise 对象，如果要获取到promise 返回值，我们应该用then 方法， 继续修改代码</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line">&#125;</span><br><span class="line">timeout().then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'虽然在后面，但是我先执行'</span>);</span><br></pre></td></tr></table></figure><p>　看控制台<br>　<img src="https://img-blog.csdnimg.cn/20190623193849435.png" alt="在这里插入图片描述"><br>　　我们获取到了”hello world’,  同时timeout 的执行也没有阻塞后面代码的执行，和 我们刚才说的一致。</p><p>　　这时，你可能注意到控制台中的Promise 有一个resolved，这是async 函数内部的实现原理。如果async 函数中有返回一个值 ,当调用该函数时，内部会调用Promise.solve() 方法把它转化成一个promise 对象作为返回，但如果timeout 函数内部抛出错误呢？ 那么就会调用Promise.reject() 返回一个promise 对象， 这时修改一下timeout 函数　　</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">flag</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'hello world'</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="string">'my god, failure'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(timeout(<span class="literal">true</span>))  <span class="comment">// 调用Promise.resolve() 返回promise 对象。</span></span><br><span class="line"><span class="built_in">console</span>.log(timeout(<span class="literal">false</span>)); <span class="comment">// 调用Promise.reject() 返回promise 对象。</span></span><br></pre></td></tr></table></figure><p>控制台如下：<br><img src="https://img-blog.csdnimg.cn/20190623193954295.png" alt="在这里插入图片描述"><br>如果函数内部抛出错误， promise 对象有一个catch 方法进行捕获。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">timeout(<span class="literal">false</span>).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><h2 id="await"><a href="#await" class="headerlink" title="await"></a>await</h2><p>await是等待的意思，那么它等待什么呢，它后面跟着什么呢？其实它后面可以放任何表达式，不过我们更多的是放一个返回promise 对象的表达式。注意await 关键字只能放到async 函数里面</p><p>　现在写一个函数，让它返回promise 对象，该函数的作用是2s 之后让数值乘以2　</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2s 之后返回双倍的值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doubleAfter2seconds</span>(<span class="params">num</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            resolve(<span class="number">2</span> * num)</span><br><span class="line">        &#125;, <span class="number">2000</span>);</span><br><span class="line">    &#125; )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在再写一个async 函数，从而可以使用await 关键字， await 后面放置的就是返回promise对象的一个表达式，所以它后面可以写上 doubleAfter2seconds 函数的调用</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testResult</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="keyword">await</span> doubleAfter2seconds(<span class="number">30</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>现在调用testResult 函数</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testResult();</span><br></pre></td></tr></table></figure><p>　打开控制台，2s 之后，输出了60. </p><p>　　现在我们看看代码的执行过程，调用testResult 函数，它里面遇到了await, await 表示等一下，代码就暂停到这里，不再向下执行了，它等什么呢？等后面的promise对象执行完毕，然后拿到promise resolve 的值并进行返回，返回值拿到之后，它继续向下执行。具体到 我们的代码, 遇到await 之后，代码就暂停执行了， 等待doubleAfter2seconds(30) 执行完毕，doubleAfter2seconds(30) 返回的promise 开始执行，2秒 之后，promise resolve 了， 并返回了值为60， 这时await 才拿到返回值60， 然后赋值给result， 暂停结束，代码才开始继续执行，执行 console.log语句。</p><p>　　就这一个函数，我们可能看不出async/await 的作用，如果我们要计算3个数的值，然后把得到的值进行输出呢？</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">testResult</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> first = <span class="keyword">await</span> doubleAfter2seconds(<span class="number">30</span>);</span><br><span class="line">    <span class="keyword">let</span> second = <span class="keyword">await</span> doubleAfter2seconds(<span class="number">50</span>);</span><br><span class="line">    <span class="keyword">let</span> third = <span class="keyword">await</span> doubleAfter2seconds(<span class="number">30</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(first + second + third);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>　6秒后，控制台输出220, 我们可以看到，写异步代码就像写同步代码一样了，再也没有回调地域了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 前言&lt;/p&gt;
-&lt;p&gt;ES7的async/await语法在2016年就已经提出来了，用async/ await来发送异步请求，从服务端获取数据，代码很简洁，async/await 也已经被标准化。&lt;/p&gt;
-&lt;h2 id=&quot;async&quot;&gt;&lt;a href=&quot;#async&quot;
-      
-    
-    </summary>
-    
-      <category term="js" scheme="http://yoursite.com/categories/js/"/>
-    
-    
-      <category term="sync_await" scheme="http://yoursite.com/tags/sync-await/"/>
     
   </entry>
   
