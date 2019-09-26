@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[关于React中使用bind(this)的理解]]></title>
+    <url>%2F2019%2F09%2F26%2F%E5%85%B3%E4%BA%8EReact%E4%B8%AD%E4%BD%BF%E7%94%A8bind(this)%E7%9A%84%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[## 前言 在学习React的过程中发现调用函数的时候必须使用bind(this)，之后直接在class中声明函数即可正常使用，但是为什么要使用这个呢？在这里总结一下。 1.JavaScript自身特性说明如果传递一个函数名给一个变量，之后通过函数名()的方式进行调用，在方法内部如果使用this则this的指向会丢失。 示例代码： 首先我们创建test对象并直接调用方法 ： 1234567const test = &#123; name:'jack', getName:function()&#123; console.log(this.name) &#125;&#125;test.getName() 使用node test.js执行上述代码可以正常输出jack。 之后，我们对代码进行调整： 12345678const test = &#123; name:'jack', getJack:function()&#123; console.log(this.name) &#125;&#125;const func = test.getJack;func(); 我们没有直接调用对象的方法，而是将方法声明给一个中间变量，之后利用中间变量()调用方法，此时this则失去指向，输出undefined，如果使用node环境执行js文件则输出node相关信息，如嵌入到html中则this指向window对象。 2.React事件绑定React中的bind同上方原理一致,在JSX中传递的事件不是一个字符串，而是一个函数（如:onClick={this.handleClick}），此时onClick即是中间变量，所以处理函数中的this指向会丢失。解决这个问题就是给调用函数时bind(this)，从而使得无论事件处理函数如何传递，this指向都是当前实例化对象。 当然，如果不想使用bind(this)，我们可以在声明函数时使用箭头函数将函数内容返回给一个变量，并在调用时直接使用this.变量名即可。示例代码如下： 123456789101112131415161718192021222324252627282930313233343536import React from 'react';export default class Life extends React.Component&#123; constructor(props)&#123; super(props); this.state = &#123; count:4 &#125;; &#125; render()&#123; var style = &#123; padding:'10px', color:'red', fontSize:'30px' &#125; return ( &lt;div style=&#123;style&#125;&gt;&#123;/*注意js语法使用一个括号&#123;&#125;去表示,style使用两个括号,原因里面其实是一个对象*/&#125; &lt;p&gt;React生命周期介绍&lt;/p&gt; &lt;button onClick=&#123;this.handleAdd&#125;&gt;无bind点击一下&lt;/button&gt; &lt;button onClick=&#123;this.handleClick.bind(this)&#125;&gt;有bind点击一下&lt;/button&gt; &lt;p&gt;&#123;this.state.count&#125;&lt;/p&gt; &lt;/div&gt; ) &#125; //此时this指向是当前实例对象 handleAdd = ()=&gt; &#123; console.log(this) this.setState(&#123; count:5 &#125;) &#125; handleClick()&#123; this.setState(&#123; count:6 &#125;) &#125;&#125; 总结普通函数中，内层函数不能从外层函数中继承this的值，在内层函数中，this会是window或者undefined（取决于是否使用严格模式），可以设置一个临时变量用来将外部的this值导入到内部函数中，再一个方法就是在内部函数执行.bind(this)。而箭头函数的this是继承父级的this。因此在React中要注意，在一个方法中调用this.setState()等函数，或者在render()方法中被调用，都有内层函数参与，因此需要将该方法的this绑定到class。所以如果是用function的普通方法定义，需要在constructor中bind(this)，如：this.onChange = this.onChange.bind(this);这样this指向组件实例，就可以在render()中使用，也可以在方法中调用this.setState()方法了。或者直接用箭头函数进行定义。这样，this就继承自父级方法render(), 而render()的this为组件实例。这样一来，在render()中就可以愉快的使用了： 12345render() &#123;return(&lt;input onChange=&#123;this.onChange&#125;&gt;);&#125; 不建议在render()中bind，如：，因为它会在每次render()方法执行时绑定类方法，肯定对于性能有影响。而直接在constructor中bind, 则bind只会在组件实例化初时运行一次。]]></content>
+      <categories>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>bind(this)</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[前端面试题：如何画一条0.5px的线]]></title>
     <url>%2F2019%2F09%2F24%2F%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%E5%A6%82%E4%BD%95%E7%94%BB%E4%B8%80%E6%9D%A10.5px%E7%9A%84%E7%BA%BF%2F</url>
     <content type="text"><![CDATA[## 前言 理论上1px已经是最小单位了，那如何画一条0.5px的线呢？有以下两种方法 解决方法 采用meta viewport的方式 1&lt;meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5"/&gt; 这样子就能缩放到原来的0.5倍，如果是1px那么就会变成0.5px 要记得viewport只针对于移动端，只在移动端上才能看到效果 采用transform: scale()的方式 1transform: scale(0.5,0.5);]]></content>
@@ -317,17 +328,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[单向绑定]]></title>
-    <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
-    <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>单向绑定</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
     <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
     <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
@@ -336,6 +336,17 @@
       </categories>
       <tags>
         <tag>dev-server</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[单向绑定]]></title>
+    <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
+    <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
+      <categories>
+        <category>vue</category>
+      </categories>
+      <tags>
+        <tag>单向绑定</tag>
       </tags>
   </entry>
   <entry>
