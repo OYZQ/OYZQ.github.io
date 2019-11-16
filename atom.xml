@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-28T12:48:49.248Z</updated>
+  <updated>2019-11-16T12:43:59.314Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python字符串方法</title>
+    <link href="http://yoursite.com/2019/11/16/python%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/11/16/python字符串方法/</id>
+    <published>2019-11-16T12:43:00.127Z</published>
+    <updated>2019-11-16T12:43:59.314Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## python大小写处理方法</p><ul><li>字符串首字母大写：title()</li><li>字符串全字母大写：upper()</li><li>字符串全字母小写：lower()</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">"ada LOVE"</span></span><br><span class="line">print(name.title())</span><br><span class="line">print(name.upper())</span><br><span class="line">print(name.lower())</span><br></pre></td></tr></table></figure><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191116200952277.png" alt="在这里插入图片描述"></p><h2 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h2><p>使用<code>+</code>拼接字符串</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">first_name = <span class="string">"ada"</span></span><br><span class="line">last_name = <span class="string">"love"</span></span><br><span class="line">full_name = first_name + last_name</span><br><span class="line">print(full_name) //输出:adalove</span><br></pre></td></tr></table></figure><h2 id="制表符和换行符"><a href="#制表符和换行符" class="headerlink" title="制表符和换行符"></a>制表符和换行符</h2><ul><li>制表符：<code>\t</code></li><li>换行符：<code>\n</code></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"Languages:\nPython\nC\nJavaScript"</span>)</span><br><span class="line">print(<span class="string">"-------------------------------------------------"</span>)</span><br><span class="line">print(<span class="string">"Languages:\n\tPython\n\tC\n\tJavaScript"</span>)</span><br></pre></td></tr></table></figure><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191116202030777.png" alt="在这里插入图片描述"></p><h2 id="rstrip-lstrip-strip-删除指定位置字符"><a href="#rstrip-lstrip-strip-删除指定位置字符" class="headerlink" title="rstrip(),lstrip(),strip()删除指定位置字符"></a>rstrip(),lstrip(),strip()删除指定位置字符</h2><h4 id="rstrip"><a href="#rstrip" class="headerlink" title="rstrip()"></a>rstrip()</h4><p>rstrip() 方法用于截掉字符串<strong>右边</strong>的空格或指定字符。<br>语法：str.rstrip([chars])<br>chars – 指定删除的字符（默认为空格）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">"     this is string example....wow!!!     "</span>;</span><br><span class="line"><span class="keyword">print</span> str.rstrip();</span><br><span class="line">str = <span class="string">"88888888this is string example....wow!!!8888888"</span>;</span><br><span class="line"><span class="keyword">print</span> str.rstrip(<span class="string">'8'</span>);</span><br></pre></td></tr></table></figure><blockquote><p>默认删除空格，但是删除空格此处显示不明显，第二个例子删除·8·会比较明显</p></blockquote><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191116203121793.png" alt="在这里插入图片描述"></p><h4 id="lstrip"><a href="#lstrip" class="headerlink" title="lstrip"></a>lstrip</h4><p>lstrip() 方法用于截掉字符串<strong>左边</strong>的空格或指定字符。</p><h4 id="strip"><a href="#strip" class="headerlink" title="strip"></a>strip</h4><p>strip() 方法用于截掉字符串<strong>两端 </strong>的空格或指定字符。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## python大小写处理方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;字符串首字母大写：title()&lt;/li&gt;
+&lt;li&gt;字符串全字母大写：upper()&lt;/li&gt;
+&lt;li&gt;字符串全字母小写：lower()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight p
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="ppython字符串方法" scheme="http://yoursite.com/tags/ppython%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>一个例子弄懂事件冒泡和事件捕获</title>
@@ -520,32 +551,6 @@
     
     
       <category term="router-link" scheme="http://yoursite.com/tags/router-link/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>webpack打包进行丑化压缩遇到（TypeError_ Cannot read property &#39;compilation&#39; of undefined）问题</title>
-    <link href="http://yoursite.com/2019/07/27/webpack%E6%89%93%E5%8C%85%E8%BF%9B%E8%A1%8C%E4%B8%91%E5%8C%96%E5%8E%8B%E7%BC%A9%E9%81%87%E5%88%B0%EF%BC%88TypeError_%20Cannot%20read%20property%20&#39;compilation&#39;%20of%20undefined%EF%BC%89%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2019/07/27/webpack打包进行丑化压缩遇到（TypeError_ Cannot read property &#39;compilation&#39; of undefined）问题/</id>
-    <published>2019-07-27T09:06:19.036Z</published>
-    <updated>2019-07-27T09:07:03.187Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 问题</p><p>在使用vue官方推荐打包插件UglifyjsWebpackPlugin对webpack打包时遇到TypeError: Cannot read property ‘compilation’ of undefined<br><img src="https://img-blog.csdnimg.cn/20190726134626808.png" alt="在这里插入图片描述"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>很明显，这是node一些包的版本对应不上的问题</p><p>将项目中的该包升级或者降级到1.0.0版本</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i uglifyjs-webpack-plugin@<span class="number">1.0</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20190726134816951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 问题&lt;/p&gt;
-&lt;p&gt;在使用vue官方推荐打包插件UglifyjsWebpackPlugin对webpack打包时遇到TypeError: Cannot read property ‘compilation’ of undefined&lt;br&gt;&lt;img src=&quot;htt
-      
-    
-    </summary>
-    
-      <category term="工具" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="问题" scheme="http://yoursite.com/tags/%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   

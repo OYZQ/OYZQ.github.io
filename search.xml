@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[python字符串方法]]></title>
+    <url>%2F2019%2F11%2F16%2Fpython%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%96%B9%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[## python大小写处理方法 字符串首字母大写：title() 字符串全字母大写：upper() 字符串全字母小写：lower() 1234name = "ada LOVE"print(name.title())print(name.upper())print(name.lower()) 结果： 拼接字符串使用+拼接字符串 1234first_name = "ada"last_name = "love"full_name = first_name + last_nameprint(full_name) //输出:adalove 制表符和换行符 制表符：\t 换行符：\n 123print("Languages:\nPython\nC\nJavaScript")print("-------------------------------------------------")print("Languages:\n\tPython\n\tC\n\tJavaScript") 结果： rstrip(),lstrip(),strip()删除指定位置字符rstrip()rstrip() 方法用于截掉字符串右边的空格或指定字符。语法：str.rstrip([chars])chars – 指定删除的字符（默认为空格） 1234str = " this is string example....wow!!! ";print str.rstrip();str = "88888888this is string example....wow!!!8888888";print str.rstrip('8'); 默认删除空格，但是删除空格此处显示不明显，第二个例子删除·8·会比较明显 结果： lstriplstrip() 方法用于截掉字符串左边的空格或指定字符。 stripstrip() 方法用于截掉字符串两端 的空格或指定字符。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>ppython字符串方法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一个例子弄懂事件冒泡和事件捕获]]></title>
     <url>%2F2019%2F10%2F28%2F%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%BC%84%E6%87%82%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7%2F</url>
     <content type="text"><![CDATA[先看一张图先看这张图，然后我们用例子来理解。 事件冒泡事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发。事件冒泡会从当前触发的事件目标一级一级往上传递，依次触发，直到document为止。 事件冒泡例子层级关系：body&gt;div&gt;p 给body，div,p分别绑定点击事件，console.log()出body,div,p;123456789101112131415161718192021222324252627282930313233343536373839404142434445&lt;!DOCTYPE html&gt;&lt;html lang="zh"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;事件冒泡&lt;/title&gt; &lt;style&gt; body&#123; background-color: red; &#125; div &#123; width: 500px; height: 500px; background-color: aqua; &#125; p &#123; width: 100px; height: 100px; background-color: royalblue; &#125; &lt;/style&gt; &lt;script&gt; window.onload = function()&#123; document.getElementById('body').addEventListener('click',body,false) document.getElementById('div').addEventListener('click',div,false) document.getElementById('p').addEventListener('click',p,false) function body() &#123; console.log('body') &#125; function div() &#123; console.log('body') &#125; function p() &#123; console.log('p') &#125; &#125; &lt;/script&gt;&lt;/head&gt;&lt;body id="body"&gt; &lt;div id="div"&gt; &lt;p id="p"&gt;&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt; 点击p时打印结果如下：由结果可以看出：事件冒泡会从当前触发的事件目标一级一级往上传递，依次触发，直到document为止。 事件捕获捕获型事件(event capturing)：事件从最不精确的对象(document 对象)开始触发，然后到最精确(也可以在窗口级别捕获事件，不过必须由开发人员特别指定)事件捕获会从document开始触发，一级一级往下传递，依次触发，直到真正事件目标为止。 这时将addEventListener的第三个参数改为true 再次点击： 123document.getElementById('body').addEventListener('click',body,true)document.getElementById('div').addEventListener('click',div,true)document.getElementById('p').addEventListener('click',p,true) 结果如图：由此可以得出：事件捕获会从document开始触发，一级一级往下传递，依次触发，直到真正事件目标为止。]]></content>
@@ -372,17 +383,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[单向绑定]]></title>
-    <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
-    <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
-      <categories>
-        <category>vue</category>
-      </categories>
-      <tags>
-        <tag>单向绑定</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[新版本vue中没有dev-server.js文件，如何进行后台数据模拟？]]></title>
     <url>%2F2019%2F06%2F18%2F%E6%B5%85%E6%9E%90BFC%E5%8E%9F%E7%90%86%E5%8F%8A%E4%BD%9C%E7%94%A8%2F</url>
     <content type="text"><![CDATA[## 什么是BFC 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。 怎么创建BFC下列方式会创建块格式化上下文：上面太多了不太好记，主要可以记住以下四种： body 根元素 浮动元素：float 除 none 以外的值 绝对定位元素：position (absolute、fixed) display 为 inline-block、table-cells、flex overflow 除了 visible 以外的值 (hidden、auto、scroll) BFC 特性 使 BFC 内部浮动元素不会到处乱跑； 和浮动元素产生边界。 BFC常见作用1、阻止外边距折叠margin塌陷问题：在标准文档流中，块级标签之间竖直方向的margin会以大的为准，这就是margin的塌陷现象。可以用overflow：hidden产生bfc来解决。 1234567891011&lt;style&gt;div&#123; width: 100px; height: 100px; background: lightblue; margin: 100px;&#125;&lt;/style&gt;&lt;body&gt; &lt;div&gt;&lt;/div&gt; &lt;div&gt;&lt;/div&gt; 从效果上看，因为两个div元素都处于同一个BFC容器下（这里指body元素），所以第一个div的下边距和第二个div的上边距发生了重叠，所以两个盒子之间距离只有100px，而不是200px。 但这不是 CSS 的 bug，我们可以理解为一种规范，如果想要避免外边距的重叠，可以将其放在不同的 BFC 容器中。 123456789101112131415161718192021&lt;style&gt; .content1,.content2&#123; overflow: hidden; &#125; .div1,.div2 &#123; width: 100px; height: 100px; background: lightblue; margin: 100px; &#125; &lt;/style&gt;&lt;body&gt; &lt;div class="content1"&gt; &lt;div class="div1"&gt;&lt;/div&gt; &lt;/div&gt; &lt;div class="content2"&gt; &lt;div class="div2"&gt;&lt;/div&gt; &lt;/div&gt;&lt;/body&gt; 2、包含浮动元素高度塌陷问题，在通常情况下父元素的高度会被子元素撑开，而在这里因为其子元素为浮动元素所以父元素发生了高度坍塌，上下边界重合，这时就可以用BFC来清除浮动了。 123&lt;div style="border: 1px solid #000;"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 由于容器内元素浮动，脱离了文档流，所以容器只剩下2px的边距高度。如果触发容器的BFC，那么容器将会包裹浮动元素。 123&lt;div style="border: 1px solid #000;overflow: hidden"&gt; &lt;div style="width: 100px;height: 100px;background: grey;float: left;"&gt;&lt;/div&gt;&lt;/div&gt; 3、阻止元素被浮动元素覆盖兄弟div浮动问题：由于左侧块级元素发生了浮动，所以和右侧未发生浮动的块级元素不在同一层内，所以会发生div遮挡问题。可以给右侧元素添加 overflow: hidden，触发BFC来解决遮挡问题。 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt; 这时候其实第二个元素有部分被浮动元素所覆盖，但是文本信息不会被浮动元素所覆盖，如果想避免元素被覆盖，可触发第二个元素的BFC特性，在第二个元素中加入overflow：hidden，就会变成： 123&lt;div style="height: 100px;width: 100px;float: left;background: lightblue"&gt;我是一个左浮动的元素&lt;/div&gt;&lt;div style="width: 200px; height: 200px;background: grey;overflow:hidden"&gt;我是一个没有设置浮动, 也没有触发 BFC 元素, width: 200px; height:200px; background: grey;&lt;/div&gt;]]></content>
@@ -394,14 +394,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
-    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
-    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+    <title><![CDATA[单向绑定]]></title>
+    <url>%2F2019%2F06%2F18%2F%E5%8D%95%E5%90%91%E7%BB%91%E5%AE%9A%2F</url>
+    <content type="text"><![CDATA[## 简单理解 单向绑定非常简单，就是把Model绑定到View，当我们用JavaScript代码更新Model时，View就会自动更新。 MVVM就是在前端页面上，应用了扩展的MVC模式，我们关心Model的变化，MVVM框架自动把Model的变化映射到DOM结构上，这样，用户看到的页面内容就会随着Model的变化而更新。 例如，我们定义好一个JavaScript对象作为Model，并且把这个Model的两个属性绑定到DOM节点上： 经过MVVM框架的自动转换，浏览器就可以直接显示Model的数据了： 下面我们在vue中看看首先，我们就可以在HTML页面中编写JavaScript代码。我们的Model是一个JavaScript对象，它包含两个属性： 1234&#123; name: 'Robot', age: 15&#125; 而负责显示的是DOM节点可以用和来引用Model的属性： 1234&lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt;&lt;/div&gt; 最后一步是用Vue把两者关联起来。要特别注意的是，在内部编写的JavaScript代码，需要用jQuery把MVVM的初始化代码推迟到页面加载完毕后执行，否则，直接在内执行MVVM代码时，DOM节点尚未被浏览器加载，初始化将失败。正确的写法如下： 12345678910111213141516171819202122232425262728293031323334&lt;html&gt;&lt;head&gt;&lt;!-- 引用jQuery --&gt;&lt;script src="/static/js/jquery.min.js"&gt;&lt;/script&gt;&lt;!-- 引用Vue --&gt;&lt;script src="/static/js/vue.js"&gt;&lt;/script&gt;&lt;script&gt;// 初始化代码:$(function () &#123; var vm = new Vue(&#123; el: '#vm', data: &#123; name: 'Robot', age: 15 &#125; &#125;); window.vm = vm;&#125;);&lt;/script&gt;&lt;/head&gt;&lt;body&gt; &lt;div id="vm"&gt; &lt;p&gt;Hello, &#123;&#123; name &#125;&#125;!&lt;/p&gt; &lt;p&gt;You are &#123;&#123; age &#125;&#125; years old!&lt;/p&gt; &lt;/div&gt;&lt;/body&gt;&lt;html&gt; 其中，el指定了要把Model绑定到哪个DOM根节点上，语法和jQuery类似。这里的’#vm’对应ID为vm的一个\节点 在该节点以及该节点内部，就是Vue可以操作的View。Vue可以自动把Model的状态映射到View上，但是不能操作View范围之外的其他DOM节点。 然后，data属性指定了Model，我们初始化了Model的两个属性name和age，在View内部的\节点上，可以直接用引用Model的某个属性。 一切正常的话，我们在浏览器中访问http://localhost:3000/static/index.html，可以看到页面输出为： 12Hello, Robot!You are 15 years old! 如果打开浏览器console，因为我们用代码window.vm = vm，把VM变量绑定到了window对象上，所以，可以直接修改VM的Model： 1window.vm.name = 'Bob' 执行上述代码，可以观察到页面立刻发生了变化，原来的Hello, Robot!自动变成了Hello, Bob!。Vue作为MVVM框架会自动监听Model的任何变化，在Model数据变化时，更新View的显示。这种Model到View的绑定我们称为单向绑定。]]></content>
       <categories>
-        <category>H5/C3</category>
+        <category>vue</category>
       </categories>
       <tags>
-        <tag>clientX</tag>
+        <tag>单向绑定</tag>
       </tags>
   </entry>
   <entry>
@@ -413,6 +413,17 @@
       </categories>
       <tags>
         <tag>图片验证码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[clientX,screenX,pageX,offsetX的区别]]></title>
+    <url>%2F2019%2F06%2F17%2FclientX%2CscreenX%2CpageX%2CoffsetX%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[## 前言 关于clientX,screenX,pageX,offsetX的区别之前也比较迷糊，然后自己写了几个demo算是弄明白了，在这记录一下。 定义一、clientX、clientY点击位置距离当前body可视区域的x，y坐标。可以理解为距离浏览器窗口的距离，但注意这里不包括浏览器的导航栏距离只是浏览器内容区域。 二、pageX、pageY对于整个页面来说，包括了被卷去的body部分的长度相对于文档边缘,包含滚动条距离 三、screenX、screenY点击位置距离当前电脑屏幕的x，y坐标 四、offsetX、offsetY相对于带有定位的父盒子的x，y坐标 贴图下面这张图很清楚的标明了 demo下面来看一个小demo加深理解 12345678910111213141516171819202122232425262728293031323334353637383940414243444546&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt; &lt;title&gt;Document&lt;/title&gt; &lt;style&gt; *&#123; margin: 0; padding: 0; &#125; .big&#123; width: 300px; height: 1000px; background-color: greenyellow; margin: 0 auto; position: absolute; &#125; #div&#123; width: 200px; height: 200px; background-color: skyblue; margin: 150px auto; position: relative; &#125; &lt;/style&gt;&lt;/head&gt;&lt;body&gt; &lt;div class="big"&gt; &lt;div id="div"&gt;&lt;/div&gt; &lt;/div&gt; &lt;script&gt; var div = document.getElementById("div") div.onclick = function (e) &#123; console.log('clientY',e.clientY) console.log('screenY',e.screenY) console.log('pageY',e.pageY) console.log('offsetY',e.offsetY) console.log('下一个') &#125; &lt;/script&gt;&lt;/body&gt;&lt;/html&gt; 效果图未滚动时：滚动时：]]></content>
+      <categories>
+        <category>H5/C3</category>
+      </categories>
+      <tags>
+        <tag>clientX</tag>
       </tags>
   </entry>
   <entry>
