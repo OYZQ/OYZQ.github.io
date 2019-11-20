@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-16T12:43:59.314Z</updated>
+  <updated>2019-11-20T09:15:04.205Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python文件读取read()、readline()、readlines()</title>
+    <link href="http://yoursite.com/2019/11/20/python%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96read()%E3%80%81readline()%E3%80%81readlines()/"/>
+    <id>http://yoursite.com/2019/11/20/python文件读取read()、readline()、readlines()/</id>
+    <published>2019-11-20T09:14:26.984Z</published>
+    <updated>2019-11-20T09:15:04.205Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿## read()</p><ul><li>优点是：读取整个文件，将文件内容放到一个字符串变量中。</li><li>缺点是：如果文件非常大，尤其是大于内存时，无法使用read()方法。</li></ul><p>示例：<br>pi_digits.txt文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3.1415926535</span><br><span class="line">8979323846</span><br><span class="line">2643383279</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">filename = <span class="string">'pi_digits.txt'</span></span><br><span class="line"><span class="keyword">with</span> open(filename) <span class="keyword">as</span> file:</span><br><span class="line">file1 = file.read()</span><br><span class="line">print(file.rstrip())//<span class="comment">#rstrip() 删除 string 字符串末尾的指定字符（默认为空格）.</span></span><br></pre></td></tr></table></figure><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119141309150.png" alt="在这里插入图片描述"></p><h2 id="readline"><a href="#readline" class="headerlink" title="readline()"></a>readline()</h2><ul><li>优点：readline()方法每次读取一行；返回的是一个字符串对象，保持当前行的内存</li><li>缺点：读取速度较慢</li></ul><p>示例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">filename = <span class="string">'pi_digits.txt'</span></span><br><span class="line"><span class="keyword">with</span> open(filename) <span class="keyword">as</span> file:</span><br><span class="line"><span class="comment"># 循环读取每一行，需要读取三次</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        text_line = file.readline()</span><br><span class="line">        <span class="keyword">if</span> text_line:</span><br><span class="line">            file3 = text_line</span><br><span class="line">            print(file3.rstrip())</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119141731456.png" alt="在这里插入图片描述"></p><h2 id="readlines"><a href="#readlines" class="headerlink" title="readlines()"></a>readlines()</h2><ul><li>特点：一次性读取整个文件；自动将文件内容分析成一个行的<strong>列表</strong>。</li></ul><p>示例：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filename = <span class="string">'pi_digits.txt'</span></span><br><span class="line"><span class="keyword">with</span> open(filename) <span class="keyword">as</span> file:</span><br><span class="line">   file3 = file.readlines()</span><br><span class="line">   print(file3)</span><br><span class="line">   <span class="comment">#从列表中循环读取出每一行</span></span><br><span class="line">   <span class="keyword">for</span> line <span class="keyword">in</span> file3:</span><br><span class="line">       print(line.rstrip())</span><br></pre></td></tr></table></figure><p>结果：<br><img src="https://img-blog.csdnimg.cn/20191119142017805.png" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿## read()&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优点是：读取整个文件，将文件内容放到一个字符串变量中。&lt;/li&gt;
+&lt;li&gt;缺点是：如果文件非常大，尤其是大于内存时，无法使用read()方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;示例：&lt;br&gt;pi_digits.txt文件：&lt;/p&gt;
+      
+    
+    </summary>
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="python文件读取read()、readline()、readlines()" scheme="http://yoursite.com/tags/python%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96read-%E3%80%81readline-%E3%80%81readlines/"/>
+    
+  </entry>
   
   <entry>
     <title>python字符串方法</title>
@@ -524,33 +554,6 @@
     
     
       <category term="postcss-px2rem" scheme="http://yoursite.com/tags/postcss-px2rem/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>router-link-active 与 router-link-exact-active 区别</title>
-    <link href="http://yoursite.com/2019/07/28/router-link-active%20%E4%B8%8E%20router-link-exact-active%20%E5%8C%BA%E5%88%AB/"/>
-    <id>http://yoursite.com/2019/07/28/router-link-active 与 router-link-exact-active 区别/</id>
-    <published>2019-07-28T07:22:08.070Z</published>
-    <updated>2019-07-28T08:25:02.255Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## router-link-exact-active</p><p>router-link-exact-active 是精确匹配规则，即只有当前点击router被匹配</p><h2 id="router-link-active"><a href="#router-link-active" class="headerlink" title="router-link-active"></a>router-link-active</h2><p>router-link-active 默认是全包含匹配规则，即path名全包含在当前router path名开头的router也会被匹配到。</p><p>　　　　　　　1. \<router-link to="/"></router-link></p><p>　　　　　　　2. \<router-link to="/a"></router-link></p><p>　　　　　　　3. \<router-link to="/b"></router-link></p><p>　　　　　　　4. \<router-link to="/ab"></router-link></p><p>　　　　　　　2/3号被选中 1号也会被匹配到router-link-active，4号被选中1号2号两个也会被匹配到router-link-active。</p><p>　　　　　　　<strong>可以通过在router添加exact属性改变为精精确匹配。</strong></p><p>我遇到两个router同时匹配class：router-link-active 的情况，而我预期是被点击的router匹配。查了官方文档得知<br><img src="https://img-blog.csdnimg.cn/2019072615391839.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## router-link-exact-active&lt;/p&gt;
-&lt;p&gt;router-link-exact-active 是精确匹配规则，即只有当前点击router被匹配&lt;/p&gt;
-&lt;h2 id=&quot;router-link-active&quot;&gt;&lt;a href=&quot;#router-li
-      
-    
-    </summary>
-    
-      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
-    
-    
-      <category term="router-link" scheme="http://yoursite.com/tags/router-link/"/>
     
   </entry>
   
