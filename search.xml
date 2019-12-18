@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[图解原型链]]></title>
+    <url>%2F2019%2F12%2F18%2F%E5%9B%BE%E8%A7%A3%E5%8E%9F%E5%9E%8B%E9%93%BE%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <categories>
+        <category>js</category>
+      </categories>
+      <tags>
+        <tag>原型</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Django建立项目基本流程]]></title>
     <url>%2F2019%2F11%2F21%2FDjango%E5%BB%BA%E7%AB%8B%E9%A1%B9%E7%9B%AE%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[## 创建一个虚拟环境： 在要创建项目的目录输入：virtualenv test1 激活虚拟环境建立虚拟环境后，进入Scripts目录，在输入activate，见到下一行前面有一个括号就激活成功了。 安装Django进入到test1目录按装Django 由于我们是在虚拟环境中工作，因此在所有的系统中，安装Django的命令都相同：不需要指定标志–user ，也无需使用python -m pip install package_name 这样较长的命令。别忘了，Django仅在虚拟环境处于活动状态时才可用 在Django中创建项目在依然处于活动的虚拟环境的情况下（test1包含在括号内），执行django-admin.py startproject test_log .命令来新建一个名为（test_log）项目： 这个命令末尾的句点让新项目使用合适的目录结构，这样开发完成后可轻松地将应用程序部署到服务器。千万别忘了这个句点，否则部署应用程序时将遭遇一些配置问题。如果忘记了这个句点，就将创建的文件和文件夹删除（test1除外），再重新运行这个命令。 创建数据库Django将大部分与项目相关的信息都存储在数据库中，因此我们需要创建一个供Django使用的数据库。为给项目test1创建数据库，请在处于活动虚拟环境中的情况下执行python manage.py migrate的命令： 我们将修改数据库称为迁移 数据库。首次执行命令migrate 时，将让Django确保数据库与项目的当前状态匹配。 查看项目下面来核实Django是否正确地创建了项目。为此，可执行命令runserver ，如下所示： Django启动一个服务器，让你能够查看系统中的项目，了解它们的工作情况。当你在浏览器中输入URL以请求网页时，该Django服务器将进行响应：生成合适的网页，并将其发送给浏览器。 现在打开浏览器，并输入URL：http://localhost:8000/；如果这不管用，请输入http://127.0.0.1:8000/。你将看到类似于下面的页面，这个页面是Django创建的，让你知道到目前为止一切正常。若要关闭这个服务器，按Ctrl+ C即可。]]></content>

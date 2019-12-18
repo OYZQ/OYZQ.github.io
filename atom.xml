@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-11-21T00:46:47.440Z</updated>
+  <updated>2019-12-18T01:06:52.860Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图解原型链</title>
+    <link href="http://yoursite.com/2019/12/18/%E5%9B%BE%E8%A7%A3%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>http://yoursite.com/2019/12/18/图解原型链/</id>
+    <published>2019-12-18T01:05:28.344Z</published>
+    <updated>2019-12-18T01:06:52.860Z</updated>
+    
+    <content type="html"><![CDATA[<p>﻿<img src="https://img-blog.csdnimg.cn/20191216105051507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;﻿&lt;img src=&quot;https://img-blog.csdnimg.cn/20191216105051507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cH
+      
+    
+    </summary>
+    
+      <category term="js" scheme="http://yoursite.com/categories/js/"/>
+    
+    
+      <category term="原型" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%9E%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Django建立项目基本流程</title>
@@ -528,32 +553,6 @@
     
     
       <category term="关于Img标签绑定" scheme="http://yoursite.com/tags/%E5%85%B3%E4%BA%8EImg%E6%A0%87%E7%AD%BE%E7%BB%91%E5%AE%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>轮播插件vue-awesome-swiper的使用方法</title>
-    <link href="http://yoursite.com/2019/08/04/%E8%BD%AE%E6%92%AD%E6%8F%92%E4%BB%B6vue-awesome-swiper%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2019/08/04/轮播插件vue-awesome-swiper的使用方法/</id>
-    <published>2019-08-04T08:30:29.751Z</published>
-    <updated>2019-08-04T08:31:13.594Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 前言</p><p>在使用vue框架写项目时，轮播图是经常需要用到的，在这里推荐一款vue的轮播图插件vue-awesome-swiper。支持多种样式，<a href="https://surmon-china.github.io/vue-awesome-swiper/" target="_blank" rel="noopener">点击样式预览</a>。贴上地址：<a href="https://github.com/surmon-china/vue-awesome-swiper" target="_blank" rel="noopener">vue-awesome-swiper</a></p><h2 id="安装引用"><a href="#安装引用" class="headerlink" title="安装引用"></a>安装引用</h2><ol><li><code>npm install vue-awesome-swiper --save</code></li><li>在<code>main.js</code>文件中引入，和<code>vue-router</code>使用差不多<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueAwesomeSwiper <span class="keyword">from</span> <span class="string">'vue-awesome-swiper'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// require styles</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'swiper/dist/css/swiper.css'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueAwesomeSwiper, <span class="comment">/* &#123; default global options &#125; */</span>)</span><br></pre></td></tr></table></figure></li></ol><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在VUE中经常需要循环遍历图片然后生成轮播图，加上一个动态指示点像这样：<br><img src="https://img-blog.csdnimg.cn/20190801142525287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>代码如下：</p><blockquote><p>js部分是一些设置例如循环播放，间隔时间，指示器设置等<br>这里需要注意的是数据里动态绑定src使用本地图片需要使用require，若使用网络图片则不需要</p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"wrapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">swiper</span> <span class="attr">:options</span>=<span class="string">"swiperOption"</span>&gt;</span>//这既是图片轮播</span><br><span class="line">      <span class="tag">&lt;<span class="name">swiper-slide</span> <span class="attr">v-for</span>=<span class="string">"item of swiperlist"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"swiper-img"</span> <span class="attr">:src</span>=<span class="string">"item.imgurl"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">swiper-slide</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-pagination weiz"</span> <span class="attr">slot</span>=<span class="string">"pagination"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      // 上面div是指示器不需要可以删除，要其他样式例如前进后退按钮切换可以自己修改，官方文档都有</span><br><span class="line">    <span class="tag">&lt;/<span class="name">swiper</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/ecmascript-6"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      swiperlist: [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          imgurl: <span class="built_in">require</span>(<span class="string">"../../assets/img/banner/1.webp"</span>)</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          imgurl: <span class="built_in">require</span>(<span class="string">"../../assets/img/banner/2.webp"</span>)</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          imgurl: <span class="built_in">require</span>(<span class="string">"../../assets/img/banner/3.webp"</span>)</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          imgurl: <span class="built_in">require</span>(<span class="string">"../../assets/img/banner/4.webp"</span>)</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      ],</span></span><br><span class="line"><span class="undefined">      swiperOption: &#123;</span></span><br><span class="line"><span class="undefined">        pagination: &#123;</span></span><br><span class="line"><span class="javascript">          el: <span class="string">".swiper-pagination"</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        autoplay: &#123;</span></span><br><span class="line"><span class="undefined">          delay: 3000,</span></span><br><span class="line"><span class="javascript">          disableOninteraction: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        loop: <span class="literal">true</span></span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 前言&lt;/p&gt;
-&lt;p&gt;在使用vue框架写项目时，轮播图是经常需要用到的，在这里推荐一款vue的轮播图插件vue-awesome-swiper。支持多种样式，&lt;a href=&quot;https://surmon-china.github.io/vue-awesome-swip
-      
-    
-    </summary>
-    
-      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
-    
-    
-      <category term="vue-awesome-swiper" scheme="http://yoursite.com/tags/vue-awesome-swiper/"/>
     
   </entry>
   
