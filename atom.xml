@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-18T01:06:52.860Z</updated>
+  <updated>2019-12-20T03:26:49.279Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端用Node写个接口自己用</title>
+    <link href="http://yoursite.com/2019/12/20/%E5%89%8D%E7%AB%AF%E7%94%A8Node%E5%86%99%E4%B8%AA%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%B7%B1%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/12/20/前端用Node写个接口自己用/</id>
+    <published>2019-12-20T03:24:01.060Z</published>
+    <updated>2019-12-20T03:26:49.279Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前端工程师经常会有一个烦恼，就是一个项目啥都写完了奈何没有后端给自己写数据，这时候用前端人的后端语言–node.js写给接口自己用啥烦恼都没有。</p><h2 id="简单示例"><a href="#简单示例" class="headerlink" title="简单示例"></a>简单示例</h2><p>先用<code>npm init</code>初始化一个项目，然后在该项目里创建<code>app.js</code>文件：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line"></span><br><span class="line">app.all(<span class="string">'*'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;             <span class="comment">//设置跨域访问</span></span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"X-Requested-With"</span>);</span><br><span class="line">    res.header(<span class="string">"Access-Control-Allow-Methods"</span>,<span class="string">"PUT,POST,GET,DELETE,OPTIONS"</span>);</span><br><span class="line">    res.header(<span class="string">"X-Powered-By"</span>,<span class="string">' 3.2.1'</span>);</span><br><span class="line">    res.header(<span class="string">"Content-Type"</span>, <span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">    next();</span><br><span class="line"> &#125;);</span><br><span class="line"><span class="keyword">var</span> infor = [                       <span class="comment">//传前端的数据</span></span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'jay'</span>,</span><br><span class="line">        age:<span class="number">20</span>,</span><br><span class="line">        sex:<span class="string">'男'</span>,</span><br><span class="line">        hobby:<span class="string">'basketball'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'张三'</span>,</span><br><span class="line">        age:<span class="number">23</span>,</span><br><span class="line">        sex:<span class="string">'女'</span>,</span><br><span class="line">        hobby:<span class="string">'shopping'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'李四'</span>,</span><br><span class="line">        age:<span class="number">24</span>,</span><br><span class="line">        sex:<span class="string">'男'</span>,</span><br><span class="line">        hobby:<span class="string">'music'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'小红'</span>,</span><br><span class="line">        age:<span class="number">28</span>,</span><br><span class="line">        sex:<span class="string">'男'</span>,</span><br><span class="line">        hobby:<span class="string">'game'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">'Tony'</span>,</span><br><span class="line">        age:<span class="number">24</span>,</span><br><span class="line">        sex:<span class="string">'男'</span>,</span><br><span class="line">        hobby:<span class="string">'no'</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/api'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;           <span class="comment">//配置接口api</span></span><br><span class="line">    res.status(<span class="number">200</span>),</span><br><span class="line">    res.json(infor)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//配置服务端口</span></span><br><span class="line"><span class="keyword">var</span> server = app.listen(<span class="number">3000</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> host = server.address().address;</span><br><span class="line">    <span class="keyword">var</span> port = server.address().port;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'listen at http://%s:%s'</span>,host,port)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>上面用到了<code>express</code>框架，所以要<code>install</code>一下，直接在命令行里安装并写入依赖里:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express --save</span><br></pre></td></tr></table></figure></p><h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>把项目运行起来<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node app.js</span><br></pre></td></tr></table></figure></p><h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><p>在<code>html</code>文件中发送请求:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    type:<span class="string">'get'</span>,</span><br><span class="line">    url:<span class="string">'http://localhost:3000/api'</span>,</span><br><span class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;,</span><br><span class="line">    error:<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>打开控制台如图：<br><img src="https://img-blog.csdnimg.cn/20191220112028645.png" alt="在这里插入图片描述"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;前端工程师经常会有一个烦恼，就是一个项目啥都写完了奈何没有后端给自己写数据，这时候用前端人的后端语言–node.js写给接口自己用啥烦恼都没
+      
+    
+    </summary>
+    
+      <category term="node.js" scheme="http://yoursite.com/categories/node-js/"/>
+    
+    
+      <category term="node接口" scheme="http://yoursite.com/tags/node%E6%8E%A5%E5%8F%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>图解原型链</title>
@@ -527,32 +552,6 @@
     
     
       <category term="用vue-cli脚手架开发APP的步骤" scheme="http://yoursite.com/tags/%E7%94%A8vue-cli%E8%84%9A%E6%89%8B%E6%9E%B6%E5%BC%80%E5%8F%91APP%E7%9A%84%E6%AD%A5%E9%AA%A4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于Img标签绑定_src不显示图片</title>
-    <link href="http://yoursite.com/2019/08/08/%E5%85%B3%E4%BA%8EImg%E6%A0%87%E7%AD%BE%E7%BB%91%E5%AE%9A_src%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/"/>
-    <id>http://yoursite.com/2019/08/08/关于Img标签绑定_src不显示图片/</id>
-    <published>2019-08-08T10:57:05.717Z</published>
-    <updated>2019-08-08T10:58:18.908Z</updated>
-    
-    <content type="html"><![CDATA[<p>﻿## 问题</p><p>如下图所示动态绑定src，不显示图片，将路径换成网络图片地址又可以显示<br><img src="https://img-blog.csdnimg.cn/20190731163052166.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190731163059508.png" alt="在这里插入图片描述"></p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>引用本地图片需要加上require，使用require定义之后，就可以动态使用了，不用require你就只能写死的。不用 :src=”‘../img/image.jpg’” 会被解析为字符串<br><img src="https://img-blog.csdnimg.cn/2019073116330411.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyMDY4NTUw,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;﻿## 问题&lt;/p&gt;
-&lt;p&gt;如下图所示动态绑定src，不显示图片，将路径换成网络图片地址又可以显示&lt;br&gt;&lt;img src=&quot;https://img-blog.csdnimg.cn/20190731163052166.png&quot; alt=&quot;在这里插入图片描述&quot;&gt;&lt;br&gt;&lt;im
-      
-    
-    </summary>
-    
-      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
-    
-    
-      <category term="关于Img标签绑定" scheme="http://yoursite.com/tags/%E5%85%B3%E4%BA%8EImg%E6%A0%87%E7%AD%BE%E7%BB%91%E5%AE%9A/"/>
     
   </entry>
   
